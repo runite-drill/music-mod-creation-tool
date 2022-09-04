@@ -1,12 +1,12 @@
 import React from 'react'
-import { Pane, Link, Small, Text, Card, Heading, Icon, UnorderedList, ListItem, BanCircleIcon, TickCircleIcon, HelpIcon, BuildIcon } from 'evergreen-ui'
+import { Pane, Link, Small, Text, Button, Card, Heading, Icon, UnorderedList, ListItem, BanCircleIcon, TickCircleIcon, HelpIcon, BuildIcon } from 'evergreen-ui'
 
 export default function About() {
   return (
     <Pane width={560} display="flex" flexDirection="column" justifyContent="center" border="default" elevation={1} padding={16}>
       <Pane display="flex" justifyContent="space-between">
         <Heading>About this tool<Icon icon={BuildIcon} marginLeft={8}/></Heading>
-        <Text color="muted"><Small><Link href="#">Source code</Link></Small></Text>
+        <Text color="muted"><Small><Link href="https://github.com/camielvs/music-mod-creation-tool">Source code</Link></Small></Text>
       </Pane>
       <Card height={8} />
       <Text>What this tool does do</Text>
@@ -50,7 +50,12 @@ export default function About() {
           Magic.
         </ListItem>
       </UnorderedList>
-      <Card height={8} />
+      <Card height={16} />
+      <Pane display="flex" justifyContent="center">
+        <Link href="https://github.com/camielvs/music-mod-creation-tool">
+          <Button appearance="minimal">Request a game be added to this builder.</Button>
+        </Link>
+      </Pane>
     </Pane> 
   )
 }

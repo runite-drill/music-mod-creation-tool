@@ -3,6 +3,8 @@ import { ArrowDownIcon, InfoSignIcon, Button, Code, Pane, Strong, Text, Icon, Li
 import About from './About'
 import Title from './Title'
 import Instructions from './Instructions'
+import ModInput from './ModInput'
+import Footer from './Footer'
 
 export default function Page() {
   return (
@@ -18,8 +20,12 @@ export default function Page() {
           <Button><Icon icon={InfoSignIcon} marginRight={8}/> Tell me more</Button>
         </Pane>
         <Card height={32} />
+        <ModInput />
+        <Card height={32} />
         <About />
         <Card height={32} />
+        <Footer />
+        <Card height={16} />
       </Pane>
     </Pane>
   )
