@@ -1,14 +1,17 @@
 import React from 'react'
-import { Pane, Link, Small, Text, Button, Card, Heading, Icon, UnorderedList, ListItem, BanCircleIcon, TickCircleIcon, HelpIcon, BuildIcon } from 'evergreen-ui'
+import { Pane, Link, Small, Text, Button, Card, Heading, Icon, UnorderedList, ListItem, Tooltip, BanCircleIcon, TickCircleIcon, HelpIcon, BuildIcon, CaretUpIcon, CaretDownIcon } from 'evergreen-ui'
+import HideableCard from './HideableCard'
 
 export default function About() {
-  return (
-    <Pane width={560} display="flex" flexDirection="column" justifyContent="center" border="default" elevation={1} padding={16}>
-      <Pane display="flex" justifyContent="space-between">
-        <Heading>About this tool<Icon icon={BuildIcon} marginLeft={8}/></Heading>
-        <Text color="muted"><Small><Link href="https://github.com/camielvs/music-mod-creation-tool">Source code</Link></Small></Text>
-      </Pane>
-      <Card height={8} />
+  const heading = (
+    <Pane display="flex" justifyContent="space-between">
+      <Heading>About this tool<Icon icon={BuildIcon} marginLeft={8}/></Heading>
+      <Text color="muted"><Small><Link href="https://github.com/camielvs/music-mod-creation-tool">Source code</Link></Small></Text>
+    </Pane>
+  )
+
+  const content = (
+    <Pane>
       <Text>What this tool does do</Text>
       <UnorderedList icon={TickCircleIcon} iconColor="success">
         <ListItem>
@@ -56,6 +59,12 @@ export default function About() {
           <Button appearance="minimal">Request a game be added to this builder.</Button>
         </Link>
       </Pane>
+    </Pane>
+  )
+
+  return (
+    <Pane width={560} display="flex" flexDirection="column" justifyContent="center" border="default" elevation={1} padding={16}>
+      <HideableCard title="About" content={content} heading={heading}/>
     </Pane> 
   )
 }
