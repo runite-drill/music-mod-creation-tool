@@ -7,8 +7,9 @@ export default function Footer() {
       <Heading size={400}>Music Mod Creation Tool <Text color="muted">created by Utopia Music</Text></Heading>
       <Text color="muted">Spotify | Youtube | Steam | Bandcamp | Discord</Text>
       <Card height={16} />
+
       <Text color="muted">
-        <Small>Join the music modding <Link href="#">Discord</Link>.</Small>
+        <Small><Link href="https://www.buymeacoffee.com/utopia">Support this tool</Link>.</Small>
       </Text>
     </Card>
   )

@@ -1,19 +1,20 @@
 import React from 'react'
-import { Pane, Text, Card, Button, Heading, Icon, StatusIndicator, Strong, Tooltip, ManualIcon, CaretUpIcon, CaretDownIcon } from 'evergreen-ui'
+import { Pane, Text, Card, StatusIndicator, Strong, ManualIcon } from 'evergreen-ui'
 import HideableCard from './HideableCard';
+import { games } from '../data/games';
 
 export default function Instructions() {
+  const gameList = games.map((game, i) => {
+    return game.isSupported ? (
+        <StatusIndicator key={i} color={game.color}>{game.title}</StatusIndicator>
+      ) : null
+  })
   const content = (
     <Pane>
       <Text>This easy-to-use tool creates all the necessary files to add music your mods. Currently, the tool works for the following Paradox Interactive Games:</Text>
       <Card height={8} />
       <Pane display="flex" flexDirection="column">
-        <StatusIndicator color="#8a7753">Europa Universalis IV</StatusIndicator>
-        <StatusIndicator color="#720e13">Crusader Kings III</StatusIndicator>
-        <StatusIndicator color="#23415d">Crusader Kings II</StatusIndicator>
-        <StatusIndicator color="#515c50">Hearts of Iron IV</StatusIndicator>
-        <StatusIndicator color="#99662e">Imperator: Rome</StatusIndicator>
-        <StatusIndicator color="#4fb8ee">Cities: Skylines</StatusIndicator>
+        {gameList}
       </Pane>
       <Card height={8} />
       <Text>To use the tool, simply enter the name of your mod in the box below, select which games you want to generate files for and then upload your <Strong>.ogg</Strong> music files.</Text>

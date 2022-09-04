@@ -1,49 +1,71 @@
 import React from 'react'
-import { Pane, Link, Small, Text, Card, Heading, Icon, Button, Strong, Checkbox, TextInputField, CodeBlockIcon, TakeActionIcon } from 'evergreen-ui'
+import { Pane, Link, Small, Text, Card, Heading, Icon, Button, Strong, TextInputField, CodeBlockIcon, TakeActionIcon, Alert } from 'evergreen-ui'
 import CheckGame from './CheckGame'
 import MusicFileUploader from './MusicFileUploader';
+import { validations } from '../scripts/util/validations';
+import { games } from '../data/games';
 
 export default function ModInput() {
-  const [games, setGames] = React.useState([
-    {
-      title: 'Europa Universalis IV',
-      isSelected: false,
+  const [errorAlert, setErrorAlert] = React.useState(null)
+  const [modName, setModName] = React.useState('')
+  const [errors, setErrors] = React.useState({
+    title: {
+      isValid: true,
     },
-    {
-      title: 'Crusader Kings III',
-      isSelected: false,
+    selection: {
+      isValid: true,
     },
-    {
-      title: 'Crusader Kings II',
-      isSelected: false,
+    files: {
+      isValid: true,
     },
-    {
-      title: 'Hearts of Iron IV',
-      isSelected: false,
-    },
-    {
-      title: 'Imperator: Rome',
-      isSelected: false,
-    },
-    {
-      title: 'Cities: Skylines',
-      isSelected: false,
-    },
-  ]);
+  })
 
-  function setGameSelect(name, selectState) {
-    games.find(item => item.title === name).isSelected = selectState;
-    setGames(games);
+  const [selectedGames, setSelectedGames] = React.useState([])
+
+  function setGameSelect(game, isSelected) {
+    const selectedGamesArray = selectedGames.filter(v => v.tag !== game.tag)
+
+    if (isSelected) {
+      selectedGamesArray.push(game)
+    }
+
+    setSelectedGames(selectedGamesArray);
   };
 
   const gameCheckBoxes = games.map((game, i) => {
-    return <CheckGame key={i} game={game.title} setGameSelect={setGameSelect}/>
+    return <CheckGame key={i} game={game} setGameSelect={setGameSelect}/>
   });
+
+  function runScripts() {
+    const errs = validations(modName, selectedGames)
+    const isFormValid = errs.title.isValid && errs.selection.isValid && errs.files.isValid
+    setErrors(errs)
+    setErrorAlert(!isFormValid ? (
+      <Alert intent="danger" 
+      title="Validation failed"
+      >
+        <Small>{!errs.title.isValid ? errs.title.message : null}</Small>
+        <Pane height={0} />
+        <Small>{!errs.selection.isValid ? errs.selection.message : null}</Small>
+        <Pane height={0} />
+        <Small>{!errs.files.isValid ? errs.files.message : null}</Small>
+      </Alert>
+    ) : null)
+
+    if (isFormValid) {
+      selectedGames.forEach(g => {
+        console.log(g.title)
+      })
+    }
+  }
 
   return (
     <Pane width={560} display="flex" flexDirection="column" justifyContent="center" border="default" elevation={1} padding={16}>
       <Pane display="flex" justifyContent="space-between">
-        <Heading>Music Mod Builder<Icon icon={CodeBlockIcon} marginLeft={8}/></Heading>
+        <Pane display="flex" alignItems="center">
+          <Heading>Music Mod Builder</Heading>
+          <Icon icon={CodeBlockIcon} marginLeft={8}/>
+        </Pane>
         <Text color="muted"><Small><Link href="#">Help</Link></Small></Text>
       </Pane>
       <Card height={8} />
@@ -52,23 +74,31 @@ export default function ModInput() {
       <TextInputField
         label=""
         id="modName"
+        isInvalid={!errors.title.isValid}
         placeholder="MyAwesomeMusicMod"
-        hint="You cannot use spaces or grammar/punctuation."
+        hint="Minimum 3 characters. You cannot use spaces or grammar/punctuation."
+        value={modName}
+        onChange={e => setModName(e.target.value)}
       />
       <Card height={8} />
       <Pane>
         <Text><Strong>Select games</Strong></Text>
-        {gameCheckBoxes}
-        <Checkbox disabled label="Stellaris (coming soon!)" />
+        <Pane paddingLeft={8} border={!errors.selection.isValid ? 'default' : undefined} borderColor="#D14343" borderRadius={4}>
+          {gameCheckBoxes}
+        </Pane>
       </Pane>
       <Card height={8} />
         <Text><Strong>Upload music</Strong></Text>
       <MusicFileUploader />
       <Card height={8} />
       <Pane display="flex" justifyContent="center">
-        <Button appearance="primary"><Icon icon={TakeActionIcon} marginRight={8}/>Generate music mod</Button>
+        <Button appearance="primary" onClick={() => {runScripts()}}>
+          <Icon icon={TakeActionIcon} marginRight={8}/>
+          Generate music mod
+        </Button>
       </Pane>
       <Card height={8} />
+      {errorAlert}
     </Pane> 
   )
 };

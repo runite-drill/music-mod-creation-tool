@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pane, Link, Small, Text, Button, Card, Heading, Icon, UnorderedList, ListItem, Tooltip, BanCircleIcon, TickCircleIcon, HelpIcon, BuildIcon, CaretUpIcon, CaretDownIcon } from 'evergreen-ui'
+import { Pane, Link, Small, Text, Button, Card, Heading, Icon, UnorderedList, ListItem, BanCircleIcon, TickCircleIcon, HelpIcon, BuildIcon } from 'evergreen-ui'
 import HideableCard from './HideableCard'
 
 export default function About() {
@@ -21,10 +21,10 @@ export default function About() {
           Create radio gfx files for radio stations. 
         </ListItem>
         <ListItem>
-          Script music to appear ingame.
+          Create the neccessary folder structure for music to work ingame.
         </ListItem>
         <ListItem>
-          Create the neccessary folder structure for music to work.
+          Write the script to make the music play ingame.
         </ListItem>
         <ListItem>
           Invoke occasional headbanging.
@@ -43,6 +43,9 @@ export default function About() {
           Convert music files into the correct format.
         </ListItem>
         <ListItem>
+          Generate thumbnails and other artwork.
+        </ListItem>
+        <ListItem>
           Save you from any potential copyright issues.
         </ListItem>
       </UnorderedList>
@@ -56,7 +59,7 @@ export default function About() {
       <Card height={16} />
       <Pane display="flex" justifyContent="center">
         <Link href="https://github.com/camielvs/music-mod-creation-tool">
-          <Button appearance="minimal">Request a game be added to this builder.</Button>
+          <Button appearance="minimal">Request a game be added to this tool.</Button>
         </Link>
       </Pane>
     </Pane>

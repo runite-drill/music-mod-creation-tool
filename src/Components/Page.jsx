@@ -1,5 +1,5 @@
 import React from 'react'
-import { ArrowDownIcon, InfoSignIcon, Button, Code, Pane, Strong, Text, Icon, Link, Small, majorScale, Card, Heading, StatusIndicator } from 'evergreen-ui'
+import { ArrowDownIcon, InfoSignIcon, Button, Pane, Icon, Card } from 'evergreen-ui'
 import About from './About'
 import Title from './Title'
 import Instructions from './Instructions'
@@ -13,14 +13,14 @@ export default function Page() {
         <Card height={32} />
         <Title />
         <Card height={32} />
-        <Instructions />
+        <ModInput />
         <Card height={32} />
         <Pane display="flex" justifyContent="space-evenly">
           <Button appearance="primary"><Icon icon={ArrowDownIcon} marginRight={8}/>Lets ... go!</Button>
           <Button><Icon icon={InfoSignIcon} marginRight={8}/> Tell me more</Button>
         </Pane>
         <Card height={32} />
-        <ModInput />
+        <Instructions />
         <Card height={32} />
         <About />
         <Card height={32} />

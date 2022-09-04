@@ -18,7 +18,10 @@ export default function HideableCard(props) {
 
   return (
     <Pane display="flex" flexDirection="column">
-      {props.heading ?? <Heading>{props.title}<Icon icon={props.icon} marginLeft={8}/></Heading>}
+      {props.heading ?? <Pane display="flex" alignItems="center">
+        <Heading>{props.title}</Heading>
+        <Icon icon={props.icon} marginLeft={8}/>
+        </Pane>}
       <Card height={8} />
       {!isCardHidden ? (
         props.content
