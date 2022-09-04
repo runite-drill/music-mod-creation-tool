@@ -13,6 +13,9 @@ function modTitleValidation(modName) {
   if (modName.length > 32) {
     return {isValid: false, message: "Your mod name must be less than 32 characters long."}
   }
+  if (/[^\w\-]/.test(modName)) {
+    return {isValid: false, message: "Your mod name must only consist of letters, numbers or underscores."}
+  }
   return {isValid: true, message: "success"}
 }
 
