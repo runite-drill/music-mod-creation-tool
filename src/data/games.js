@@ -41,4 +41,10 @@ export const games = [
     color: "#cf7149",
     isSupported: false,
   },
+  {
+    title: 'Victoria 3',
+    tag: 'V3',
+    color: "#8e5164",
+    isSupported: false,
+  },
 ];

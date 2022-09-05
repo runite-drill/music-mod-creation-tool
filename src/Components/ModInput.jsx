@@ -1,13 +1,15 @@
 import React from 'react'
-import { Pane, Link, Small, Text, Card, Heading, Icon, Button, Strong, TextInputField, CodeBlockIcon, TakeActionIcon, Alert } from 'evergreen-ui'
+import { Pane, Link, Small, Text, Card, Heading, Icon, Button, Strong, TextInputField, CodeBlockIcon, TakeActionIcon, Alert, HelpIcon } from 'evergreen-ui'
 import CheckGame from './CheckGame'
 import MusicFileUploader from './MusicFileUploader';
 import { validations } from '../scripts/util/validations';
 import { games } from '../data/games';
 
 export default function ModInput() {
-  const [errorAlert, setErrorAlert] = React.useState(null)
   const [modName, setModName] = React.useState('')
+  const [selectedGames, setSelectedGames] = React.useState([])
+  const [files, setFiles] = React.useState([])
+  const [errorAlert, setErrorAlert] = React.useState(null)
   const [errors, setErrors] = React.useState({
     title: {
       isValid: true,
@@ -20,8 +22,6 @@ export default function ModInput() {
     },
   })
 
-  const [selectedGames, setSelectedGames] = React.useState([])
-
   function setGameSelect(game, isSelected) {
     const selectedGamesArray = selectedGames.filter(v => v.tag !== game.tag)
 
@@ -33,11 +33,16 @@ export default function ModInput() {
   };
 
   const gameCheckBoxes = games.map((game, i) => {
-    return <CheckGame key={i} game={game} setGameSelect={setGameSelect}/>
+    return <CheckGame key={`${game.tag}-${i}`} game={game} setGameSelect={setGameSelect}/>
   });
 
+  function setValidFiles(f) {
+    console.log(f)
+    setFiles(f)
+  }
+
   function runScripts() {
-    const errs = validations(modName, selectedGames)
+    const errs = validations(modName, selectedGames, files)
     const isFormValid = errs.title.isValid && errs.selection.isValid && errs.files.isValid
     setErrors(errs)
     setErrorAlert(!isFormValid ? (
@@ -66,7 +71,11 @@ export default function ModInput() {
           <Heading>Music Mod Builder</Heading>
           <Icon icon={CodeBlockIcon} marginLeft={8}/>
         </Pane>
-        <Text color="muted"><Small><Link href="#">Help</Link></Small></Text>
+        <Button appearance="minimal">
+          <Pane display="flex" flexDirection="column" alignItems="center">
+            <Icon icon={HelpIcon}></Icon>
+          </Pane>
+        </Button>
       </Pane>
       <Card height={8} />
 
@@ -89,7 +98,7 @@ export default function ModInput() {
       </Pane>
       <Card height={8} />
         <Text><Strong>Upload music</Strong></Text>
-      <MusicFileUploader />
+      <MusicFileUploader setValidFiles={setValidFiles}/>
       <Card height={8} />
       <Pane display="flex" justifyContent="center">
         <Button appearance="primary" onClick={() => {runScripts()}}>

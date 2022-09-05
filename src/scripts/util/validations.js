@@ -1,8 +1,8 @@
-export function validations(modName, selectedGames) {
+export function validations(modName, selectedGames, files) {
   return {
     title: modTitleValidation(modName),
     selection: gameSelectionValidation(selectedGames),
-    files: musicFileValidation(),
+    files: musicFileValidation(files),
   }
 }
 
@@ -26,7 +26,11 @@ function gameSelectionValidation(selectedGames) {
   return {isValid: true, message: "success"}
 }
 
-function musicFileValidation() {
+function musicFileValidation(files) {
+  console.log(files)
+  if (files.length < 1) {
+    return {isValid: false, message: "You must upload at least one music track."}
+  }
   // currently done in file uploader
   return {isValid: true, message: "success"}
 }
