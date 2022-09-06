@@ -10,7 +10,7 @@ export function ir_builder(mod, files, gameFolder) {
   # This script is open-source and was created by community composer Runite Drill / Utopia for ease in publishing music mods.
   # Feel free to join their music modding community and ask any questions: https://discord.gg/SdQhfBM
   
-  # For more info/guide on music modding, please visit the EU4 wiki: https://eu4.paradoxwikis.com/Music_modding
+  # For more info/guide on music modding, please visit the EU4 wiki: https://imperator.paradoxwikis.com/Music_modding
   */
 
   console.log('IR!')
@@ -22,6 +22,7 @@ export function ir_builder(mod, files, gameFolder) {
     if (f.name.split(".")[0] !== "maintheme") {
       text.push(textDef(f))
     }
+    musicFolder.file(f.name, f)
   })
   musicFolder.file(`${mod}_MMCT.txt`, text.join('\n'));
 

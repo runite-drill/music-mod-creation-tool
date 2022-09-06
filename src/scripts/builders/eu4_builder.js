@@ -22,6 +22,7 @@ export function eu4_builder(mod, files, gameFolder) {
     if (f.name.split(".")[0] !== "maintheme") {
       asset.push(assetDef(f))
     }
+    musicFolder.file(f.name, f)
   })
   musicFolder.file(`${mod}_MMCT.asset`, asset.join('\n'));
 
