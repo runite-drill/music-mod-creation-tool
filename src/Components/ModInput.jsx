@@ -9,6 +9,7 @@ export default function ModInput() {
   const [modName, setModName] = React.useState('')
   const [selectedGames, setSelectedGames] = React.useState([])
   const [files, setFiles] = React.useState([])
+  const [rejectedFiles, setRejectedFiles] = React.useState([])
   const [errorAlert, setErrorAlert] = React.useState(null)
   const [errors, setErrors] = React.useState({
     title: {
@@ -37,12 +38,15 @@ export default function ModInput() {
   });
 
   function setValidFiles(f) {
-    console.log(f)
     setFiles(f)
   }
 
+  function setInvalidFiles(f) {
+    setRejectedFiles(f)
+  }
+
   function runScripts() {
-    const errs = validations(modName, selectedGames, files)
+    const errs = validations(modName, selectedGames, files, rejectedFiles)
     const isFormValid = errs.title.isValid && errs.selection.isValid && errs.files.isValid
     setErrors(errs)
     setErrorAlert(!isFormValid ? (
@@ -117,7 +121,7 @@ export default function ModInput() {
       </Pane>
       <Card height={8} />
         <Text><Strong>Upload music</Strong></Text>
-      <MusicFileUploader setValidFiles={setValidFiles}/>
+      <MusicFileUploader setValidFiles={setValidFiles} setInvalidFiles={setInvalidFiles}/>
       <Card height={8} />
       <Pane display="flex" justifyContent="center">
         <Button appearance="primary" onClick={() => {runScripts()}}>

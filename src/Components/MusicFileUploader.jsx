@@ -27,6 +27,7 @@ export default function MusicFileUploader(props) {
       setFiles(accepted)
       setFileRejections(rejected)
       props.setValidFiles(accepted)
+      props.setInvalidFiles(rejected)
       updateFileList(accepted, rejected)
     },
     [acceptedMimeTypes, files, fileRejections, maxFiles, maxSizeInBytes, props]
@@ -40,19 +41,24 @@ export default function MusicFileUploader(props) {
   function addFile(fs) {
     const f = files
     //check for duplicates and route to file rejections
-
-
-
-    fs.forEach(file => f.push(file))
-    setFiles(f)
-    props.setValidFiles(f)
-    updateFileList(f, fileRejections)
+    fs.forEach(file => {
+      if (f.find(v => v.name === file.name)) {
+        const message="You have already used this filename. Filenames must be unique."
+        addFileRejection([{file, message}])
+       } else {
+        f.push(file)
+        setFiles(f)
+        props.setValidFiles(f)
+        updateFileList(f, fileRejections)
+       } 
+    })
   }
 
   function addFileRejection(fs) {
     const f = fileRejections
     fs.forEach(file => f.push(file))
     setFileRejections(f)
+    props.setInvalidFiles(f)
     updateFileList(files, f)
   }
 
@@ -66,6 +72,7 @@ export default function MusicFileUploader(props) {
       (fileRejection) => fileRejection.file === file && fileRejection.reason !== FileRejectionReason.OverFileLimit
     )
     const { message } = fileRejection || {}
+    console.log(message)
 
     return (
       <React.Fragment key={`${file.name}-${index}`}>
