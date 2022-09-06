@@ -5,11 +5,11 @@ export const FAQ = [
   },
   {
     q: "Can I use the same mod name as someone else?",
-    a: "Yes. But if you run the two mods together the game may get a little confused.",
+    a: "Yes. But if you run the two mods together the game engine may get a little confused.",
   },
   {
     q: "How much code does this tool generate for each game?",
-    a: "Enough code to get your music playing in-game. You will need to add modifiers and update the default artwork yourself.",
+    a: "Enough code to get your music playing in-game. You will need to add modifiers and update any default artwork yourself.",
   },
   {
     q: "Why is _____ game not supported?",
@@ -17,7 +17,7 @@ export const FAQ = [
   },
   {
     q: "Does this tool create an entire mod from scratch?",
-    a: "No. This tool only generates items relating to music. You will need to create the base mod and .mod files yourself.",
+    a: "No. This tool only generates files relating to music. You will need to create the base mod and .mod files yourself.",
   },
   {
     q: "Why am I limited to only .ogg files?",
@@ -29,7 +29,7 @@ export const FAQ = [
   },
   {
     q: "Does this tool let me change the main theme of the game?",
-    a: "Yes. If you upload an audio file named 'maintheme.ogg' the tool will handle it as a special case.",
+    a: "Yes. If you upload an audio file named 'maintheme.ogg' the tool will handle it as a special case such that it plays only during the game's loading screen.",
   },
   {
     q: "What do I do with the .zip file this tool generates?",
@@ -37,6 +37,10 @@ export const FAQ = [
   },
   {
     q: "Is this tool tracking me or saving my data?",
-    a: "No. This tool operates entirely within your browser and no data is stored after you leave this page. If you refresh this page before downloading your files, you will need to start again.",
+    a: "No. This tool operates entirely within your browser and no data is retained. If you refresh this page before downloading your files, you will need to start again.",
+  },
+  {
+    q: "Why doesn't this tool work on my browser?",
+    a: "This tool runs on JSZip and FileSaver.js, which don't always work with the architecture of older web browsers. Try using it on the latest version of Chrome, Firefox or Safari.",
   },
 ]

@@ -4,7 +4,7 @@ import { builders } from "./builders";
 
 export function buildMods(mName, games, files) {
   const zip = new JSZip();
-  const root = zip.folder(`${mName}MusicMods`)
+  const root = zip.folder(`${mName}_MMCT`)
 
   games.forEach(g => {
     let gameFolder = root.folder(g.tag.toLowerCase())
@@ -13,7 +13,7 @@ export function buildMods(mName, games, files) {
 
   zip.generateAsync({type:"blob"})
   .then(function(content) {
-    saveAs(content, `${mName}_MusicMods.zip`);
+    saveAs(content, `${mName}_MMCT.zip`);
   })
 
   return {isError: false, message: "Mods successfully built! Your files have been automatically downloaded."}
