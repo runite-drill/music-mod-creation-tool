@@ -6,7 +6,9 @@ export default function About() {
   const heading = (
     <Pane display="flex" justifyContent="space-between">
       <Heading>About this tool<Icon icon={BuildIcon} marginLeft={8}/></Heading>
-      <Text color="muted"><Small><Link href="https://github.com/camielvs/music-mod-creation-tool">Source code</Link></Small></Text>
+      <Text color="muted">
+        <Small><Link href="https://github.com/camielvs/music-mod-creation-tool">Source code</Link></Small>
+      </Text>
     </Pane>
   )
 
@@ -66,7 +68,7 @@ export default function About() {
   )
 
   return (
-    <Pane width={560} display="flex" flexDirection="column" justifyContent="center" border="default" elevation={1} padding={16}>
+    <Pane width={560} display="flex" flexDirection="column" justifyContent="center" border="default" elevation={1} padding={16} paddingBottom={8}>
       <HideableCard title="About" content={content} heading={heading}/>
     </Pane> 
   )

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pane, Link, Small, Text, Card, Heading, Icon, Button, Strong, TextInputField, CodeBlockIcon, TakeActionIcon, Alert, HelpIcon } from 'evergreen-ui'
+import { Pane, Popover, Small, Text, Card, Heading, Link, Icon, Button, Strong, TextInputField, Position, CodeBlockIcon, TakeActionIcon, Alert, HelpIcon, Tooltip } from 'evergreen-ui'
 import CheckGame from './CheckGame'
 import MusicFileUploader from './MusicFileUploader';
 import { validations } from '../scripts/util/validations';
@@ -71,11 +71,30 @@ export default function ModInput() {
           <Heading>Music Mod Builder</Heading>
           <Icon icon={CodeBlockIcon} marginLeft={8}/>
         </Pane>
-        <Button appearance="minimal">
-          <Pane display="flex" flexDirection="column" alignItems="center">
-            <Icon icon={HelpIcon}></Icon>
-          </Pane>
-        </Button>
+        <Popover
+          position={Position.BOTTOM_RIGHT}
+          content={({ close }) => (
+            <Pane
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              flexDirection="column"
+              padding={16}
+            >
+              <Text>For assistance, please see the FAQ</Text>
+              <Card height={0} />
+              <Text>or drop a message on my <Link href="https://discord.gg/SdQhfBM">Discord</Link>!</Text>
+            </Pane>
+          )}
+        >
+          <Tooltip content="Help">
+            <Button appearance="minimal">
+              <Pane display="flex" flexDirection="column" alignItems="center">
+                <Icon icon={HelpIcon}></Icon>
+              </Pane>
+            </Button>
+          </Tooltip>
+        </Popover>
       </Pane>
       <Card height={8} />
 

@@ -5,6 +5,7 @@ import Title from './Title'
 import Instructions from './Instructions'
 import ModInput from './ModInput'
 import Footer from './Footer'
+import Help from './Help'
 
 export default function Page() {
   return (
@@ -15,14 +16,16 @@ export default function Page() {
         <Card height={32} />
         <ModInput />
         <Card height={32} />
-        <Pane display="flex" justifyContent="space-evenly">
+        {/* <Pane display="flex" justifyContent="space-evenly">
           <Button appearance="primary"><Icon icon={ArrowDownIcon} marginRight={8}/>Lets ... go!</Button>
           <Button><Icon icon={InfoSignIcon} marginRight={8}/> Tell me more</Button>
-        </Pane>
+        </Pane> */}
         <Card height={32} />
         <Instructions />
         <Card height={32} />
         <About />
+        <Card height={32} />
+        <Help />
         <Card height={32} />
         <Footer />
         <Card height={16} />
