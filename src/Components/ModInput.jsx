@@ -4,12 +4,15 @@ import CheckGame from './CheckGame'
 import MusicFileUploader from './MusicFileUploader';
 import { validations } from '../scripts/util/validations';
 import { games } from '../data/games';
+import { buildMods } from '../scripts/builders/buildMods';
 
 export default function ModInput() {
   const [modName, setModName] = React.useState('')
   const [selectedGames, setSelectedGames] = React.useState([])
   const [files, setFiles] = React.useState([])
   const [rejectedFiles, setRejectedFiles] = React.useState([])
+  const [statusMessage, setStatusMessage] = React.useState(null)
+  const [statusAlert, setStatusAlert] = React.useState(null)
   const [errorAlert, setErrorAlert] = React.useState(null)
   const [errors, setErrors] = React.useState({
     title: {
@@ -62,9 +65,16 @@ export default function ModInput() {
     ) : null)
 
     if (isFormValid) {
-      selectedGames.forEach(g => {
-        console.log(g.title)
-      })
+      const {isError, message} = buildMods(modName, selectedGames, files)
+      // setStatusMessage(buildMessage)
+      
+      setStatusAlert(message ? (
+        <Alert
+          intent="success"
+          title={message}
+          marginBottom={32}
+        />
+      ) : null)
     }
   }
 
@@ -72,7 +82,7 @@ export default function ModInput() {
     <Pane width={560} display="flex" flexDirection="column" justifyContent="center" border="default" elevation={1} padding={16}>
       <Pane display="flex" justifyContent="space-between">
         <Pane display="flex" alignItems="center">
-          <Heading>Music Mod Builder</Heading>
+          <Heading>Music mod builder</Heading>
           <Icon icon={CodeBlockIcon} marginLeft={8}/>
         </Pane>
         <Popover
@@ -131,6 +141,7 @@ export default function ModInput() {
       </Pane>
       <Card height={8} />
       {errorAlert}
+      {statusAlert}
     </Pane> 
   )
 };

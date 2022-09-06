@@ -43,14 +43,17 @@ export default function MusicFileUploader(props) {
     //check for duplicates and route to file rejections
     fs.forEach(file => {
       if (f.find(v => v.name === file.name)) {
-        const message="You have already used this filename. Filenames must be unique."
+        const message="You have already used this file name. File names must be unique."
         addFileRejection([{file, message}])
-       } else {
+      } else if (file.name.split(".").length > 2) {
+        const message="Your file name cannot contain more than one period."
+        addFileRejection([{file, message}])
+      } else {
         f.push(file)
         setFiles(f)
         props.setValidFiles(f)
         updateFileList(f, fileRejections)
-       } 
+      } 
     })
   }
 
@@ -72,7 +75,6 @@ export default function MusicFileUploader(props) {
       (fileRejection) => fileRejection.file === file && fileRejection.reason !== FileRejectionReason.OverFileLimit
     )
     const { message } = fileRejection || {}
-    console.log(message)
 
     return (
       <React.Fragment key={`${file.name}-${index}`}>

@@ -5,7 +5,7 @@ export const FAQ = [
   },
   {
     q: "Can I use the same mod name as someone else?",
-    a: "Yes, but if you run the two mods together the game may get a little confused.",
+    a: "Yes. But if you run the two mods together the game may get a little confused.",
   },
   {
     q: "How much code does this tool generate for each game?",
@@ -25,7 +25,11 @@ export const FAQ = [
   },
   {
     q: "There something wrong with my music when it plays ingame, what happened?",
-    a: "Please make sure your audio files have 32 bits, a 44.1kHz frequency and a 192KB/s bit frequency. These are technical requirements by Paradox.",
+    a: "Please make sure your audio files have 32 bits, a 44.1kHz frequency and a 192KB/s bit frequency. These are technical requirements imposed by Paradox.",
+  },
+  {
+    q: "Does this tool let me change the main theme of the game?",
+    a: "Yes. If you upload an audio file named 'maintheme.ogg' the tool will handle it as a special case.",
   },
   {
     q: "What do I do with the .zip file this tool generates?",

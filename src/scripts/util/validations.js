@@ -27,7 +27,6 @@ function gameSelectionValidation(selectedGames) {
 }
 
 function musicFileValidation(files, rejectedFiles) {
-  console.log(files)
   if (files.length < 1) {
     return {isValid: false, message: "You must upload at least one music track."}
   }
