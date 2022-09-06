@@ -33,7 +33,7 @@ export const games = [
     title: 'Cities: Skylines',
     tag: 'CS',
     color: "#4fb8ee",
-    isSupported: true,
+    isSupported: false,
   },
   {
     title: 'Stellaris',

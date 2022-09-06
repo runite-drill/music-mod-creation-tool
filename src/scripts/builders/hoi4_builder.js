@@ -2,7 +2,7 @@ export function hoi4_builder(mod, files, gameFolder) {
   /*
   # MUSIC MOD CREATION TOOL (MMCT) for Hearts of Iron 4
 
-  # This is a script that creates the required .asset file and a basic .txt file for your Hearts of Iron 4 Music Mod based on the .ogg files passed into it.
+  # This is a script that creates a the required .asset file and a .txt files to implement music into the game for your Hearts of Iron 4 Music Mod based on the .ogg files passed into it, as well as the gfx, interface and localisation files needed to create and display music within an in-game radio station. Note the radio station thumbnail generated is a placeholder - you should remember to create your own before publishing your mod. 
   
   # The script will skip over any file called "maintheme" as this only replaces the loading music and is not shown in-game by the audio engine.
   # You are strongly encouraged to hop into the generated files and check that everything has been created properly. In particular, you may wish to add to the conditions in the .txt file that affect the chances of the music playing.
@@ -10,7 +10,7 @@ export function hoi4_builder(mod, files, gameFolder) {
   # This script is open-source and was created by community composer Runite Drill / Utopia for ease in publishing music mods.
   # Feel free to join their music modding community and ask any questions: https://discord.gg/SdQhfBM
   
-  # For more info/guide on music modding, please visit the EU4 wiki: https://hoi4.paradoxwikis.com/Music_modding
+  # For more info/guide on music modding, please visit the HOI4 wiki: https://hoi4.paradoxwikis.com/Music_modding
   */
 
   console.log('HOI4!')
@@ -21,9 +21,9 @@ export function hoi4_builder(mod, files, gameFolder) {
 
   const stationName = `${mod}_MMCT`
 
-  //Create gfx files
-  gfxFolder.file(`radio_station_cover_${stationName}.dds`, require('../../data/hoi4_radio_station.dds'));
-  gfxFolder.file(`radio_station_cover_template.png`, require('../../data/radio_station_cover_template.png'));
+  //Create gfx files 
+  gfxFolder.file(`radio_station_cover_${stationName}.dds`, require('../../data/hoi4_radio_station.dds')); // currently broken
+  gfxFolder.file(`radio_station_cover_template.png`, require('../../data/radio_station_cover_template.png')); // currently broken
 
   //Create interface files
   interfaceFolder.file(`${stationName}.gfx`, gfxDef(stationName));

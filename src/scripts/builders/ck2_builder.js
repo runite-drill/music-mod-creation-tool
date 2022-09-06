@@ -2,7 +2,7 @@ export function ck2_builder(mod, files, gameFolder) {
   /*
   # MUSIC MOD CREATION TOOL (MMCT) for Crusader Kings 2
 
-  # This is a script that creates the required .asset file and a basic .txt file for your Crusader Kings 2 Music Mod based on the .ogg files passed into it.
+  # This is a script that creates the required .txt file for your Crusader Kings 2 Music Mod based on the .ogg files passed into it.
   
   # The script will skip over any file called "maintheme" as this only replaces the loading music and is not shown in-game by the audio engine.
   # You are strongly encouraged to hop into the generated files and check that everything has been created properly. In particular, you may wish to add to the conditions in the .txt file that affect the chances of the music playing.
@@ -10,7 +10,7 @@ export function ck2_builder(mod, files, gameFolder) {
   # This script is open-source and was created by community composer Runite Drill / Utopia for ease in publishing music mods.
   # Feel free to join their music modding community and ask any questions: https://discord.gg/SdQhfBM
   
-  # For more info/guide on music modding, please visit the EU4 wiki: https://ck2.paradoxwikis.com/Music_modding
+  # For more info/guide on music modding, please visit the CK2 wiki: https://ck2.paradoxwikis.com/Music_modding
   */
 
   console.log('CK2!')

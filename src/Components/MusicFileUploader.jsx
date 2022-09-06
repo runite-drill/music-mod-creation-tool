@@ -40,13 +40,16 @@ export default function MusicFileUploader(props) {
 
   function addFile(fs) {
     const f = files
-    //check for duplicates and route to file rejections
+    //check for duplicates or bad filenames and route to file rejections
     fs.forEach(file => {
       if (f.find(v => v.name === file.name)) {
         const message="You have already used this file name. File names must be unique."
         addFileRejection([{file, message}])
-      } else if (file.name.split(".").length > 2) {
+      } else if (file.name.split(".").length > 2)  {
         const message="Your file name cannot contain more than one period."
+        addFileRejection([{file, message}])
+      } else if (file.name.includes(" "))  {
+        const message="Your file name cannot contain spaces."
         addFileRejection([{file, message}])
       } else {
         f.push(file)

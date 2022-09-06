@@ -11,7 +11,6 @@ export default function ModInput() {
   const [selectedGames, setSelectedGames] = React.useState([])
   const [files, setFiles] = React.useState([])
   const [rejectedFiles, setRejectedFiles] = React.useState([])
-  const [statusMessage, setStatusMessage] = React.useState(null)
   const [statusAlert, setStatusAlert] = React.useState(null)
   const [errorAlert, setErrorAlert] = React.useState(null)
   const [errors, setErrors] = React.useState({
@@ -49,12 +48,20 @@ export default function ModInput() {
   }
 
   function runScripts() {
+    setStatusAlert(
+      <Alert
+        intent="none"
+        title="Generating music mods. Please wait..."
+        marginTop={16}
+      />
+    )
     const errs = validations(modName, selectedGames, files, rejectedFiles)
     const isFormValid = errs.title.isValid && errs.selection.isValid && errs.files.isValid
     setErrors(errs)
     setErrorAlert(!isFormValid ? (
       <Alert intent="danger" 
       title="Validation failed"
+      marginTop={16}
       >
         <Small>{!errs.title.isValid ? errs.title.message : null}</Small>
         <Pane height={0} />
@@ -66,15 +73,16 @@ export default function ModInput() {
 
     if (isFormValid) {
       const {isError, message} = buildMods(modName, selectedGames, files)
-      // setStatusMessage(buildMessage)
-      
+
       setStatusAlert(message ? (
         <Alert
           intent="success"
           title={message}
-          marginBottom={32}
+          marginTop={16}
         />
       ) : null)
+    } else {
+      setStatusAlert(null)
     }
   }
 
@@ -125,7 +133,7 @@ export default function ModInput() {
       <Card height={8} />
       <Pane>
         <Text><Strong>Select games</Strong></Text>
-        <Pane paddingLeft={8} border={!errors.selection.isValid ? 'default' : undefined} borderColor="#D14343" borderRadius={4}>
+        <Pane width={"50%"} paddingLeft={8} border={!errors.selection.isValid ? 'default' : undefined} borderColor="#D14343" borderRadius={4}>
           {gameCheckBoxes}
         </Pane>
       </Pane>

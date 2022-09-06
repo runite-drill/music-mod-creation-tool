@@ -36,6 +36,10 @@ export const FAQ = [
     a: "Inside the .zip file you will find folders for each game. Copy the folders and files inside to your mod and you're done!",
   },
   {
+    q: "How do I change my radio station thumbnail in Hearts of Iron IV?",
+    a: "You will need to create a new .dds file in the gfx folder from the template .png provided. Open the template in an image editing program and layer it over two copies of your radio station artwork; one centred on each frame. Remember to save it as a .dds file.",
+  },
+  {
     q: "Is this tool tracking me or saving my data?",
     a: "No. This tool operates entirely within your browser and no data is retained. If you refresh this page before downloading your files, you will need to start again.",
   },

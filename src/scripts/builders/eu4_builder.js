@@ -62,6 +62,7 @@ function textDef(file) {
     name = "${file.name.split(".")[0]}"
     chance = {
         modifier = { factor = 1 }
+        #modifier = { factor = 0 is_at_war = yes } #example modifier: music will not play when at war
     }
 }\n`
 }
