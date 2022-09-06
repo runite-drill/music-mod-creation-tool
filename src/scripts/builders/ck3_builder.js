@@ -21,8 +21,12 @@ export function ck3_builder(mod, files, gameFolder) {
   files.forEach((f) => {
     if (f.name.split(".")[0] !== "maintheme") {
       text.push(textDef(f))
+      musicFolder.file(f.name, f)
+    } else {
+      const mainThemeFolder = musicFolder.folder("main_themes")
+      mainThemeFolder.file(`${mod}_maintheme_MMCT.txt`, textDef(f));
+      mainThemeFolder.file(f.name, f)
     }
-    musicFolder.file(f.name, f)
   })
   musicFolder.file(`${mod}_MMCT.txt`, text.join('\n'));
 
