@@ -12,13 +12,14 @@ export function buildMods(mName, games, files) {
     gameFolder = buildMod(mName, g, files, gameFolder)
   })
 
-  zip.generateAsync({type:"blob"})
-  .then(function(content) {
-    saveAs(content, `${mName}_MMCT.zip`);
-    message = "Mods successfully built! Your files have been automatically downloaded." // currently broken
-  })
-
-
+  //band-aid pseudo-await for the HOI4 images to finish saving
+  setTimeout(() => {
+    zip.generateAsync({type:"blob"})
+    .then(function(content) {
+      saveAs(content, `${mName}_MMCT.zip`);
+      message = "Mods successfully built! Your files have been automatically downloaded." // currently broken
+    })
+  }, 1000)
   message = "Mods successfully built! Your files have been automatically downloaded." 
 
   return {isError: false, message}

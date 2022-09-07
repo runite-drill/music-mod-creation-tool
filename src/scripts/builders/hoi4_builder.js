@@ -1,4 +1,7 @@
-export function hoi4_builder(mod, files, gameFolder) {
+import stationTemplate from '../../data/radio_station_cover_template.png'
+import stationCover from '../../data/hoi4_radio_station.dds'
+
+export async function hoi4_builder(mod, files, gameFolder) {
   /*
   # MUSIC MOD CREATION TOOL (MMCT) for Hearts of Iron 4
 
@@ -20,10 +23,10 @@ export function hoi4_builder(mod, files, gameFolder) {
   const musicFolder = gameFolder.folder("music")
 
   const stationName = `${mod}_MMCT`
-
-  //Create gfx files 
-  gfxFolder.file(`radio_station_cover_${stationName}.dds`, require('../../data/hoi4_radio_station.dds')); // currently broken
-  gfxFolder.file(`radio_station_cover_template.png`, require('../../data/radio_station_cover_template.png')); // currently broken
+  
+  //Create gfx files
+  downloadData(stationTemplate, `radio_station_cover_template.png`, gfxFolder)
+  downloadData(stationCover, `radio_station_cover_${stationName}.dds`, gfxFolder)
 
   //Create interface files
   interfaceFolder.file(`${stationName}.gfx`, gfxDef(stationName));
@@ -56,6 +59,12 @@ export function hoi4_builder(mod, files, gameFolder) {
   modMusicFolder.file(`${mod}_MMCT.txt`, text.join('\n'));
 
   return gameFolder
+}
+
+async function downloadData(filepath, filename, zipFolder) {
+  const imageBlob = await fetch(filepath).then(response => response.blob());
+  const imgData = new File([imageBlob], filename);
+  zipFolder.file(filename, imgData, { base64: true });
 }
 
 function gfxDef(stationName) {
