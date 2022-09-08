@@ -12,7 +12,6 @@ export default function ModInput() {
   const [files, setFiles] = React.useState([])
   const [rejectedFiles, setRejectedFiles] = React.useState([])
   const [statusAlert, setStatusAlert] = React.useState(null)
-  const [errorAlert, setErrorAlert] = React.useState(null)
   const [errors, setErrors] = React.useState({
     title: {
       isValid: true,
@@ -58,31 +57,22 @@ export default function ModInput() {
     const errs = validations(modName, selectedGames, files, rejectedFiles)
     const isFormValid = errs.title.isValid && errs.selection.isValid && errs.files.isValid
     setErrors(errs)
-    setErrorAlert(!isFormValid ? (
-      <Alert intent="danger" 
-      title="Validation failed"
-      marginTop={16}
-      >
-        <Small>{!errs.title.isValid ? errs.title.message : null}</Small>
-        <Pane height={0} />
-        <Small>{!errs.selection.isValid ? errs.selection.message : null}</Small>
-        <Pane height={0} />
-        <Small>{!errs.files.isValid ? errs.files.message : null}</Small>
-      </Alert>
-    ) : null)
 
     if (isFormValid) {
-      const {isError, message} = buildMods(modName, selectedGames, files)
-
-      setStatusAlert(message ? (
-        <Alert
-          intent="success"
-          title={message}
-          marginTop={16}
-        />
-      ) : null)
+      buildMods(modName, selectedGames, files, setStatusAlert)
     } else {
-      setStatusAlert(null)
+      setStatusAlert(
+        <Alert intent="danger" 
+          title="Validation failed"
+          marginTop={16}
+          >
+          <Small>{!errs.title.isValid ? errs.title.message : null}</Small>
+          <Pane height={0} />
+          <Small>{!errs.selection.isValid ? errs.selection.message : null}</Small>
+          <Pane height={0} />
+          <Small>{!errs.files.isValid ? errs.files.message : null}</Small>
+        </Alert>
+      )
     }
   }
 
@@ -139,7 +129,9 @@ export default function ModInput() {
       </Pane>
       <Card height={8} />
         <Text><Strong>Upload music</Strong></Text>
-      <MusicFileUploader setValidFiles={setValidFiles} setInvalidFiles={setInvalidFiles}/>
+        <Pane border={!errors.files.isValid ? 'default' : undefined} borderColor="#D14343" borderRadius={4}>
+          <MusicFileUploader setValidFiles={setValidFiles} setInvalidFiles={setInvalidFiles}/>
+        </Pane>
       <Card height={8} />
       <Pane display="flex" justifyContent="center">
         <Button appearance="primary" onClick={() => {runScripts()}}>
@@ -148,7 +140,6 @@ export default function ModInput() {
         </Button>
       </Pane>
       <Card height={8} />
-      {errorAlert}
       {statusAlert}
     </Pane> 
   )
