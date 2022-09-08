@@ -4,7 +4,7 @@ import { Text, Link, Small, Card, Heading } from 'evergreen-ui'
 export default function Footer() {
   return (
     <Card textAlign="center">
-      <Heading size={400}>Music Mod Creation Tool <Text color="muted">created by Utopia Music</Text></Heading>
+      <Heading size={400}>Music Mod Creation Tool <Text color="muted">created by <Link size={300} color="neutral" href="https://www.utopiamusic.net/utopia">Utopia Music</Link></Text></Heading>
       <Card height={4} />
       <Text color="muted">Original video game music on</Text>
       <Card height={0} />

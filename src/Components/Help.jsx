@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pane, Card, Text, Small, Strong, Link, PredictiveAnalysisIcon } from 'evergreen-ui'
+import { Pane, Card, Text, Small, Strong, Link, LearningIcon } from 'evergreen-ui'
 import { FAQ } from '../data/faq';
 import HideableCard from './HideableCard';
 
@@ -40,7 +40,7 @@ export default function Help() {
 
   return (
     <Pane width={560} display="flex" flexDirection="column" justifyContent="center" border="default" elevation={1} padding={16} paddingBottom={8}>
-      <HideableCard title="Frequently asked questions" icon={PredictiveAnalysisIcon} content={content} />
+      <HideableCard title="Frequently asked questions" icon={LearningIcon} content={content} />
     </Pane>
       
   )
