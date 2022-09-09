@@ -204,7 +204,7 @@ function guiDef(stationName) {
 }
 
 function locDef(files, mod, stationName) {
-  const text = [`l_english:
+  const text = ['\uFEFF',`l_english:
  ${stationName}_TITLE:0 "${mod} Radio"`]
  files.forEach((f) => {
   text.push(` ${f.name.split(".")[0]}_MMCT:0 "${f.name.split(".")[0]}"`)

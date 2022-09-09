@@ -29,7 +29,7 @@ export const FAQ = [
   },
   {
     q: "Does this tool let me change the main theme of the game?",
-    a: "Yes. If you upload an audio file named 'maintheme.ogg' the tool will handle it as a special case such that it plays only during the game's loading screen. Note this currently only works for EU4, CK2 & I:R.",
+    a: "Yes. If you upload an audio file named 'maintheme.ogg' the tool will handle it as a special case such that it plays only during the game's loading screen. Note this currently only works for EU4, but it is intended to be implemented for the other games.",
   },
   {
     q: "What do I do with the .zip file this tool generates?",

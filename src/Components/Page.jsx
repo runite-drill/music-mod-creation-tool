@@ -44,7 +44,7 @@ export default function Page() {
       display="flex" 
       alignItems="stretch" 
       justifyContent="center" 
-      backgroundImage="url(/wallpaper.png)" 
+      backgroundImage="url(https://imgur.com/P1Qz7n6.png)" 
       backgroundSize="fill" 
       backgroundPosition="center"
       backgroundRepeat="repeat-y"
