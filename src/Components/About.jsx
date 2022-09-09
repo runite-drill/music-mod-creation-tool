@@ -60,7 +60,7 @@ export default function About() {
       </UnorderedList>
       <Card height={16} />
       <Pane display="flex" justifyContent="center">
-        <Link href="https://github.com/camielvs/music-mod-creation-tool">
+        <Link href="https://github.com/runite-drill/music-mod-creation-tool.git">
           <Button appearance="minimal">Request a game be added to this tool.</Button>
         </Link>
       </Pane>
