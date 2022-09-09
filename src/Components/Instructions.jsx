@@ -9,6 +9,7 @@ export default function Instructions() {
         <StatusIndicator key={i} color={game.color}>{game.title}</StatusIndicator>
       ) : null
   })
+  
   const content = (
     <Pane>
       <Text>This easy-to-use tool creates all the necessary files to add music your mods. Currently, the tool works for the following Paradox Interactive Games:</Text>
@@ -26,8 +27,8 @@ export default function Instructions() {
   )
 
   return (
-    <Pane width={560} display="flex" flexDirection="column" justifyContent="center" border="default" elevation={1} padding={16} paddingBottom={8}>
+    <Card width={560} display="flex" flexDirection="column" justifyContent="center" border="default" elevation={1} padding={16} paddingBottom={8} backgroundColor="white">
       <HideableCard title="Instructions" icon={ManualIcon} content={content} />
-    </Pane> 
+    </Card> 
   )
 }

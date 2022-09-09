@@ -13,7 +13,6 @@ export function ck2_builder(mod, files, gameFolder) {
   # For more info/guide on music modding, please visit the CK2 wiki: https://ck2.paradoxwikis.com/Music_modding
   */
 
-  console.log('CK2!')
   const musicFolder = gameFolder.folder("music")
 
   //Create .txt file

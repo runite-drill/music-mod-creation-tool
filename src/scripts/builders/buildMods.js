@@ -42,4 +42,3 @@ function buildMod(mName, game, files, gameFolder, setStatusAlert) {
   
   return builder(mName, files, gameFolder)
 }
-

@@ -13,7 +13,6 @@ export function ck3_builder(mod, files, gameFolder) {
   # For more info/guide on music modding, please visit the CK3 wiki: https://ck3.paradoxwikis.com/Music_modding
   */
 
-  console.log('CK3!')
   const musicFolder = gameFolder.folder("music")
 
   //Create .txt file

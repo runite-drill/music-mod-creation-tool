@@ -16,7 +16,6 @@ export async function hoi4_builder(mod, files, gameFolder) {
   # For more info/guide on music modding, please visit the HOI4 wiki: https://hoi4.paradoxwikis.com/Music_modding
   */
 
-  console.log('HOI4!')
   const gfxFolder = gameFolder.folder("gfx")
   const interfaceFolder = gameFolder.folder("interface")
   const localisationFolder = gameFolder.folder("localisation")

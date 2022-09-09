@@ -13,7 +13,6 @@ export function eu4_builder(mod, files, gameFolder) {
   # For more info/guide on music modding, please visit the EU4 wiki: https://eu4.paradoxwikis.com/Music_modding
   */
 
-  console.log('EU4!')
   const musicFolder = gameFolder.folder("music")
 
   //Create .asset file

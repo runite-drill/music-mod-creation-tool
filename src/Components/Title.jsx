@@ -3,7 +3,7 @@ import { Text, Link, Small, Card, Heading } from 'evergreen-ui'
 
 export default function Title() {
   return (
-    <Card textAlign="center">
+    <Card textAlign="center" backgroundColor="white" padding={16}>
       <Heading size={800}>Music Mod Creation Tool</Heading>
       <Text color="muted">For Paradox Interactive Games</Text>
       <Card height={16} />

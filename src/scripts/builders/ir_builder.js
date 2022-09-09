@@ -13,7 +13,6 @@ export function ir_builder(mod, files, gameFolder) {
   # For more info/guide on music modding, please visit the I:R wiki: https://imperator.paradoxwikis.com/Music_modding
   */
 
-  console.log('IR!')
   const musicFolder = gameFolder.folder("music")
 
   //Create .txt file

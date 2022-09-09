@@ -1,11 +1,23 @@
 import React from 'react'
-import { ArrowUpIcon, InfoSignIcon, RocketSlantIcon, PredictiveAnalysisIcon, Avatar, Button, Text, Pane, Icon, Card, toaster } from 'evergreen-ui'
-import About from './About'
+import { 
+  Avatar, 
+  Button, 
+  Card, 
+  Icon, 
+  Pane, 
+  Text, 
+  toaster, 
+  ArrowUpIcon, 
+  InfoSignIcon,  
+  LearningIcon, 
+  RocketSlantIcon,
+} from 'evergreen-ui'
 import Title from './Title'
-import Instructions from './Instructions'
 import ModInput from './ModInput'
-import Footer from './Footer'
+import Instructions from './Instructions'
+import About from './About'
 import Help from './Help'
+import Footer from './Footer'
 
 export default function Page() {
   const [isShowingDetails, setIsShowingDetails] = React.useState(false)
@@ -25,8 +37,18 @@ export default function Page() {
       size={40}
     />
   )
+  
   return (
-    <Pane display="flex" alignItems="center" justifyContent="center">
+    <Pane 
+      height={!isShowingDetails ? "100vh" : null}
+      display="flex" 
+      alignItems="stretch" 
+      justifyContent="center" 
+      backgroundImage="url(/wallpaper.png)" 
+      backgroundSize="fill" 
+      backgroundPosition="center"
+      backgroundRepeat="repeat-y"
+    >
       <Pane>
         <Card height={16} />
         <Title />
@@ -49,7 +71,7 @@ export default function Page() {
             Lets ... go!
           </Button>
           <Button onClick={()=>setIsShowingDetails(!isShowingDetails)}>
-            <Icon icon={isShowingDetails ? PredictiveAnalysisIcon : InfoSignIcon} marginRight={8}/>
+            <Icon icon={isShowingDetails ? LearningIcon : InfoSignIcon} marginRight={8}/>
             {isShowingDetails ? <Text>Got it!</Text> : <Text>Tell me more</Text> }
           </Button>
         </Pane>

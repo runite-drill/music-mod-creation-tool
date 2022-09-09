@@ -68,8 +68,8 @@ export default function About() {
   )
 
   return (
-    <Pane width={560} display="flex" flexDirection="column" justifyContent="center" border="default" elevation={1} padding={16} paddingBottom={8}>
+    <Card width={560} display="flex" flexDirection="column" justifyContent="center" border="default" elevation={1} padding={16} paddingBottom={8} backgroundColor="white">
       <HideableCard title="About" content={content} heading={heading}/>
-    </Pane> 
+    </Card> 
   )
 }

@@ -77,7 +77,7 @@ export default function ModInput() {
   }
 
   return (
-    <Pane width={560} display="flex" flexDirection="column" justifyContent="center" border="default" elevation={1} padding={16}>
+    <Card width={560} display="flex" flexDirection="column" justifyContent="center" border="default" elevation={1} padding={16} backgroundColor="white">
       <Pane display="flex" justifyContent="space-between">
         <Pane display="flex" alignItems="center">
           <Heading>Music mod builder</Heading>
@@ -141,6 +141,6 @@ export default function ModInput() {
       </Pane>
       <Card height={8} />
       {statusAlert}
-    </Pane> 
+    </Card> 
   )
 };
