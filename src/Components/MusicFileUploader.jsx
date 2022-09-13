@@ -2,7 +2,7 @@ import React from 'react'
 import { Pane, FileUploader, Alert, FileCard, majorScale, FileRejectionReason, rebaseFiles } from 'evergreen-ui'
 
 export default function MusicFileUploader(props) {
-  const acceptedMimeTypes = ["audio/ogg"] // .ogg files only
+  const acceptedMimeTypes = ["audio/ogg","application/ogg","video/ogg"] // .ogg files only
   const maxFiles = 100
   const maxSizeInBytes = 100 * 1024 ** 2 // 100 MB
   const [files, setFiles] = React.useState([])
