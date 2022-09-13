@@ -6,6 +6,8 @@ This tool assists users with adding music to Paradox Interactive games by genera
 
 The tool can be freely used at https://runite-drill.github.io/music-mod-creation-tool/.
 
+Note: This tool works best on Chrome and is unsupported on Safari and Internet Explorer.
+
 ### How to use this tool
 
 Creating music mod files with this tool is very easy.
