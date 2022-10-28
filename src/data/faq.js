@@ -21,7 +21,7 @@ export const FAQ = [
   },
   {
     q: "Why am I limited to only .ogg files?",
-    a: "Paradox uses .ogg files for all of their music needs. The audio engine will not accept any other audio file type.",
+    a: "For older games (e.g. EU4, CK2) Paradox uses .ogg files for their music needs. Newer games (e.g. CK3, V3) are more flexible and support more file types (e.g. .mp3, .wav). For backward compatibility across all games this tool limits file types to .ogg.",
   },
   {
     q: "There something wrong with my music when it plays ingame, what happened?",

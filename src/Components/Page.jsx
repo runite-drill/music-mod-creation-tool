@@ -66,7 +66,7 @@ export default function Page() {
           </Pane>
           ) : null}
         <Pane display="flex" justifyContent="space-evenly">
-          <Button appearance="primary" onClick={()=>handleGoButton()}>
+          <Button onClick={()=>handleGoButton()}>
             <Icon icon={isShowingDetails ? ArrowUpIcon : RocketSlantIcon} marginRight={8}/>
             Lets ... go!
           </Button>

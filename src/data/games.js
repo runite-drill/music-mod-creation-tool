@@ -30,6 +30,12 @@ export const games = [
     isSupported: true,
   },
   {
+    title: 'Victoria 3',
+    tag: 'VIC3',
+    color: "#8e5164",
+    isSupported: true,
+  },
+  {
     title: 'Cities: Skylines',
     tag: 'CS',
     color: "#4fb8ee",
@@ -39,12 +45,6 @@ export const games = [
     title: 'Stellaris',
     tag: 'STL',
     color: "#cf7149",
-    isSupported: false,
-  },
-  {
-    title: 'Victoria 3',
-    tag: 'V3',
-    color: "#8e5164",
     isSupported: false,
   },
 ];
