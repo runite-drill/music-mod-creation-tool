@@ -40,6 +40,7 @@ Currently, this tool works for:
 - Crusader Kings II
 - Hearts of Iron IV
 - Imperator: Rome
+- Victoria 3
 
 Support for Stellaris, Cities: Skylines and Victoria 3 is planned.
 
@@ -53,7 +54,7 @@ Most importantly, this tool does not generate a whole new mod (e.g. the `.mod` a
 
 This tool is intended to provide you with a simple, working, framework from which you can further customise as you wish. As such, this tool does not generate code that implements modifiers or alters the chances of your music playing in-game. For example, if you wish for your music to only play for a specific country you will have to go into the script and add this yourself. However, to assist with this the code does generate an example of a modifier implementation, but this is commented out of the script. 
 
-Additionally, for relevant games (CK3 / I:R) the tool only implements background/mood music and does not implement triggered/event music. This is something that you will also need add yourself.
+Additionally, for relevant games (VIC3 / CK3 / I:R) the tool only implements background/mood music and does not implement triggered/event music. This is something that you will also need add yourself.
 
 Finally, for games that implement radio stations (HOI4) the tool provides a default image to use as the radio station cover. The template radio station cover is provided, and you are encouraged to create your own cover to replace the default image.
 
