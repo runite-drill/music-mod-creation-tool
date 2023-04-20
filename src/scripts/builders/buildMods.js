@@ -3,20 +3,20 @@ import { saveAs } from 'file-saver';
 import { builders } from "./builders";
 import { Alert } from 'evergreen-ui';
 
-export function buildMods(mName, games, files, setStatusAlert) {
+export function buildMods(mod, games, files, setStatusAlert) {
   const zip = new JSZip();
-  const root = zip.folder(`${mName}_MMCT`);
+  const root = zip.folder(`${mod.filename}`);
 
   games.forEach(g => {
     const gameFolder = root.folder(g.tag.toLowerCase());
-    buildMod(mName, g, files, gameFolder, setStatusAlert);
+    buildMod(mod, g, files, gameFolder, setStatusAlert);
   });
 
   //band-aid pseudo-await for the HOI4 images to finish saving
   setTimeout(() => {
     zip.generateAsync({type:"blob"})
     .then(function(content) {
-      saveAs(content, `${mName}_MMCT.zip`);
+      saveAs(content, `${mod.filename}.zip`);
       setStatusAlert(
         <Alert
           intent="success"
@@ -28,7 +28,7 @@ export function buildMods(mName, games, files, setStatusAlert) {
   }, 1000);
 };
 
-function buildMod(mName, game, files, gameFolder, setStatusAlert) {
+function buildMod(mod, game, files, gameFolder, setStatusAlert) {
   const builder = builders[`${game.tag.toLowerCase()}_builder`];
   if (!builder) { 
     setStatusAlert(
@@ -40,5 +40,5 @@ function buildMod(mName, game, files, gameFolder, setStatusAlert) {
     );
   };
   
-  return builder(mName, files, gameFolder);
+  return builder(mod, files, gameFolder);
 };

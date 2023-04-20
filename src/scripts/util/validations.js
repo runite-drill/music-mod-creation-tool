@@ -1,20 +1,20 @@
-export function validations(modName, selectedGames, files, rejectedFiles) {
+export function validations(name, selectedGames, files, rejectedFiles) {
   return {
-    title: modTitleValidation(modName),
+    title: modTitleValidation(name),
     selection: gameSelectionValidation(selectedGames),
     files: musicFileValidation(files, rejectedFiles),
   };
 };
 
-function modTitleValidation(modName) {
-  if (modName.length < 3) {
+function modTitleValidation(name) {
+  if (name.length < 3) {
     return {isValid: false, message: "Your mod name must be at least 3 characters long."};
   };
-  if (modName.length > 32) {
+  if (name.length > 32) {
     return {isValid: false, message: "Your mod name must be less than 32 characters long."};
   };
-  if (/[^\w-]/.test(modName)) {
-    return {isValid: false, message: "Your mod name must only consist of letters, numbers or underscores."};
+  if (/[^\w- ]/.test(name)) {
+    return {isValid: false, message: "Your mod name must only consist of letters, numbers, spaces or underscores."};
   };
   return {isValid: true, message: "success"};
 };

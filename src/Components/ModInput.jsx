@@ -79,7 +79,11 @@ export default function ModInput() {
     setErrors(errs);
 
     if (isFormValid) {
-      buildMods(modName, selectedGames, files, setStatusAlert);
+      const mod = {
+        name: modName,
+        filename: `${modName.split(" ").join("")}_MMCT`,
+      }
+      buildMods(mod, selectedGames, files, setStatusAlert);
     } else {
       setStatusAlert(
         <Alert intent="danger" 
@@ -136,7 +140,7 @@ export default function ModInput() {
         id="modName"
         isInvalid={!errors.title.isValid}
         placeholder="MyAwesomeMusicMod"
-        hint="Minimum 3 characters. You cannot use spaces or grammar/punctuation."
+        hint="Minimum 3 characters."
         value={modName}
         onChange={e => setModName(e.target.value)}
       />

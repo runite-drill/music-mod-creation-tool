@@ -21,7 +21,7 @@ export async function hoi4_builder(mod, files, gameFolder) {
   const localisationFolder = gameFolder.folder("localisation");
   const musicFolder = gameFolder.folder("music");
 
-  const stationName = `${mod}_MMCT`;
+  const stationName = `${mod.filename}`;
   
   //Create gfx files
   downloadData(stationTemplate, `radio_station_cover_template.png`, gfxFolder);
@@ -46,7 +46,7 @@ export async function hoi4_builder(mod, files, gameFolder) {
     };
     modMusicFolder.file(f.name, f);
   });
-  modMusicFolder.file(`${mod}_MMCT.asset`, asset.join('\n'));
+  modMusicFolder.file(`${mod.filename}.asset`, asset.join('\n'));
 
   //.txt file
   const text = [textHeader, `music_station = "${stationName}"`];
@@ -55,7 +55,7 @@ export async function hoi4_builder(mod, files, gameFolder) {
       text.push(textDef(f));
     };
   });
-  modMusicFolder.file(`${mod}_MMCT.txt`, text.join('\n'));
+  modMusicFolder.file(`${mod.filename}.txt`, text.join('\n'));
 };
 
 async function downloadData(filepath, filename, zipFolder) {
@@ -203,7 +203,7 @@ function guiDef(stationName) {
 
 function locDef(files, mod, stationName) {
   const text = ['\uFEFF',`l_english:
- ${stationName}_TITLE:0 "${mod} Radio"`];
+ ${stationName}_TITLE:0 "${mod.name} Radio"`];
  files.forEach((f) => {
   text.push(` ${f.name.split(".")[0]}_MMCT:0 "${f.name.split(".")[0]}"`);
  });
