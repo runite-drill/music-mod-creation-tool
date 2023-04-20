@@ -42,7 +42,7 @@ export default function ModInput() {
     },
   });
 
-  const isFormComplete = modName && selectedGames.length && files.length;
+  const isFormComplete = modName.trim() && selectedGames.length && files.length;
 
   function setGameSelect(game, isSelected) {
     const selectedGamesArray = selectedGames.filter(v => v.tag !== game.tag);
@@ -74,14 +74,16 @@ export default function ModInput() {
         marginTop={16}
       />
     );
-    const errs = validations(modName, selectedGames, files, rejectedFiles);
+    const trimmedModName = modName.trim();
+    setModName(trimmedModName);
+    const errs = validations(trimmedModName, selectedGames, files, rejectedFiles);
     const isFormValid = errs.title.isValid && errs.selection.isValid && errs.files.isValid;
     setErrors(errs);
 
     if (isFormValid) {
       const mod = {
-        name: modName,
-        filename: `${modName.split(" ").join("")}_MMCT`,
+        name: trimmedModName,
+        filename: `${trimmedModName.split(" ").join("")}_MMCT`,
       }
       buildMods(mod, selectedGames, files, setStatusAlert);
     } else {
@@ -139,7 +141,7 @@ export default function ModInput() {
         label=""
         id="modName"
         isInvalid={!errors.title.isValid}
-        placeholder="MyAwesomeMusicMod"
+        placeholder="My Awesome Music Mod"
         hint="Minimum 3 characters."
         value={modName}
         onChange={e => setModName(e.target.value)}
