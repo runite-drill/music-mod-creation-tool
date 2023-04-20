@@ -1,5 +1,5 @@
-import React from 'react'
-import { Pane, Card, Button, Heading, Icon, Tooltip, CaretUpIcon, CaretDownIcon } from 'evergreen-ui'
+import React from 'react';
+import { Pane, Card, Button, Heading, Icon, Tooltip, CaretUpIcon, CaretDownIcon } from 'evergreen-ui';
 
 export default function HideableCard(props) {
   const [isCardHidden, setIsCardHidden] = React.useState(false);
@@ -14,7 +14,7 @@ export default function HideableCard(props) {
         </Pane>
       </Button>
     </Tooltip>
-  )
+  );
 
   return (
     <Pane display="flex" flexDirection="column">
@@ -31,5 +31,5 @@ export default function HideableCard(props) {
       <Card height={8} />
       {minimiseBtn}
     </Pane> 
-  )
-}
+  );
+};

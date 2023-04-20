@@ -1,17 +1,35 @@
-import React from 'react'
-import { Pane, Popover, Small, Text, Card, Heading, Link, Icon, Button, Strong, TextInputField, Position, CodeBlockIcon, TakeActionIcon, Alert, HelpIcon, Tooltip } from 'evergreen-ui'
-import CheckGame from './CheckGame'
+import React from 'react';
+import { 
+  Pane, 
+  Popover, 
+  Small, 
+  Text, 
+  Card, 
+  Heading, 
+  Link, 
+  Icon, 
+  Button, 
+  Strong, 
+  TextInputField, 
+  Position, 
+  CodeBlockIcon, 
+  TakeActionIcon, 
+  Alert, 
+  HelpIcon, 
+  Tooltip 
+} from 'evergreen-ui';
+import CheckGame from './CheckGame';
 import MusicFileUploader from './MusicFileUploader';
 import { validations } from '../scripts/util/validations';
 import { games } from '../data/games';
 import { buildMods } from '../scripts/builders/buildMods';
 
 export default function ModInput() {
-  const [modName, setModName] = React.useState('')
-  const [selectedGames, setSelectedGames] = React.useState([])
-  const [files, setFiles] = React.useState([])
-  const [rejectedFiles, setRejectedFiles] = React.useState([])
-  const [statusAlert, setStatusAlert] = React.useState(null)
+  const [modName, setModName] = React.useState('');
+  const [selectedGames, setSelectedGames] = React.useState([]);
+  const [files, setFiles] = React.useState([]);
+  const [rejectedFiles, setRejectedFiles] = React.useState([]);
+  const [statusAlert, setStatusAlert] = React.useState(null);
   const [errors, setErrors] = React.useState({
     title: {
       isValid: true,
@@ -22,29 +40,31 @@ export default function ModInput() {
     files: {
       isValid: true,
     },
-  })
+  });
+
+  const isFormComplete = modName && selectedGames.length && files.length;
 
   function setGameSelect(game, isSelected) {
-    const selectedGamesArray = selectedGames.filter(v => v.tag !== game.tag)
+    const selectedGamesArray = selectedGames.filter(v => v.tag !== game.tag);
 
     if (isSelected) {
-      selectedGamesArray.push(game)
-    }
+      selectedGamesArray.push(game);
+    };
 
     setSelectedGames(selectedGamesArray);
   };
 
   const gameCheckBoxes = games.map((game, i) => {
-    return <CheckGame key={`${game.tag}-${i}`} game={game} setGameSelect={setGameSelect}/>
+    return <CheckGame key={`${game.tag}-${i}`} game={game} setGameSelect={setGameSelect}/>;
   });
 
   function setValidFiles(f) {
-    setFiles(f)
-  }
+    setFiles(f);
+  };
 
   function setInvalidFiles(f) {
-    setRejectedFiles(f)
-  }
+    setRejectedFiles(f);
+  };
 
   function runScripts() {
     setStatusAlert(
@@ -53,13 +73,13 @@ export default function ModInput() {
         title="Generating music mods. Please wait..."
         marginTop={16}
       />
-    )
-    const errs = validations(modName, selectedGames, files, rejectedFiles)
-    const isFormValid = errs.title.isValid && errs.selection.isValid && errs.files.isValid
-    setErrors(errs)
+    );
+    const errs = validations(modName, selectedGames, files, rejectedFiles);
+    const isFormValid = errs.title.isValid && errs.selection.isValid && errs.files.isValid;
+    setErrors(errs);
 
     if (isFormValid) {
-      buildMods(modName, selectedGames, files, setStatusAlert)
+      buildMods(modName, selectedGames, files, setStatusAlert);
     } else {
       setStatusAlert(
         <Alert intent="danger" 
@@ -72,9 +92,9 @@ export default function ModInput() {
           <Pane height={0} />
           <Small>{!errs.files.isValid ? errs.files.message : null}</Small>
         </Alert>
-      )
-    }
-  }
+      );
+    };
+  };
 
   return (
     <Card width={560} display="flex" flexDirection="column" justifyContent="center" border="default" elevation={1} padding={16} backgroundColor="white">
@@ -133,14 +153,21 @@ export default function ModInput() {
           <MusicFileUploader setValidFiles={setValidFiles} setInvalidFiles={setInvalidFiles}/>
         </Pane>
       <Card height={8} />
-      <Pane display="flex" justifyContent="center">
-        <Button appearance="primary" onClick={() => {runScripts()}}>
-          <Icon icon={TakeActionIcon} marginRight={8}/>
-          Generate music mod
-        </Button>
-      </Pane>
+        <Pane display="flex" flexDirection="column">
+          <Pane display="flex" justifyContent="center">
+            <Button appearance="primary" disabled={!isFormComplete} onClick={() => {runScripts()}}>
+              <Icon icon={TakeActionIcon} marginRight={8}/>
+              Generate music mod
+            </Button>
+          </Pane>
+          {!isFormComplete && <Pane display="flex" justifyContent="center">
+            <Text size={300} width={222} textAlign="center">
+              You must enter a name, select a game and upload a file to generate a mod.
+            </Text>
+          </Pane>}
+        </Pane>
       <Card height={8} />
       {statusAlert}
     </Card> 
-  )
+  );
 };

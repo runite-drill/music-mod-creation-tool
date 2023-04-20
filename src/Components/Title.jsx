@@ -1,5 +1,5 @@
-import React from 'react'
-import { Text, Link, Small, Card, Heading } from 'evergreen-ui'
+import React from 'react';
+import { Text, Link, Small, Card, Heading } from 'evergreen-ui';
 
 export default function Title() {
   return (
@@ -11,5 +11,5 @@ export default function Title() {
         <Small>Brought to you by <Link href="https://www.youtube.com/c/utopiamusic" size={300}>Utopia</Link>.</Small>
       </Text>
     </Card>
-  )
-}
+  );
+};

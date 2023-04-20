@@ -47,4 +47,4 @@ export const FAQ = [
     q: "Why doesn't this tool work on my browser?",
     a: "Chrome is the recommended browser for using this tool. Due to a bug with their architecture, you may run into an issue with uploading your .ogg files on Firefox and Safari. This problem is external to this tool and there is no fix other than to use Chrome.",
   },
-]
+];

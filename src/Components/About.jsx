@@ -1,6 +1,21 @@
-import React from 'react'
-import { Pane, Link, Small, Text, Button, Card, Heading, Icon, UnorderedList, ListItem, BanCircleIcon, TickCircleIcon, HelpIcon, BuildIcon } from 'evergreen-ui'
-import HideableCard from './HideableCard'
+import React from 'react';
+import { 
+  Pane, 
+  Link, 
+  Small, 
+  Text, 
+  Button, 
+  Card, 
+  Heading, 
+  Icon, 
+  UnorderedList, 
+  ListItem, 
+  BanCircleIcon, 
+  TickCircleIcon, 
+  HelpIcon, 
+  BuildIcon 
+} from 'evergreen-ui';
+import HideableCard from './HideableCard';
 
 export default function About() {
   const heading = (
@@ -10,7 +25,7 @@ export default function About() {
         <Small><Link href="https://github.com/camielvs/music-mod-creation-tool">Source code</Link></Small>
       </Text>
     </Pane>
-  )
+  );
 
   const content = (
     <Pane>
@@ -65,11 +80,11 @@ export default function About() {
         </Link>
       </Pane>
     </Pane>
-  )
+  );
 
   return (
     <Card width={560} display="flex" flexDirection="column" justifyContent="center" border="default" elevation={1} padding={16} paddingBottom={8} backgroundColor="white">
       <HideableCard title="About" content={content} heading={heading}/>
     </Card> 
-  )
-}
+  );
+};

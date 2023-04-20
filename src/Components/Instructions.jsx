@@ -1,5 +1,5 @@
-import React from 'react'
-import { Pane, Text, Card, StatusIndicator, Strong, ManualIcon } from 'evergreen-ui'
+import React from 'react';
+import { Pane, Text, Card, StatusIndicator, Strong, ManualIcon } from 'evergreen-ui';
 import HideableCard from './HideableCard';
 import { games } from '../data/games';
 
@@ -7,8 +7,8 @@ export default function Instructions() {
   const gameList = games.map((game, i) => {
     return game.isSupported ? (
         <StatusIndicator key={i} color={game.color}>{game.title}</StatusIndicator>
-      ) : null
-  })
+      ) : null;
+  });
   
   const content = (
     <Pane>
@@ -24,11 +24,11 @@ export default function Instructions() {
       <Card height={8} />
       <Text>Yep. It's that easy!</Text>
     </Pane>
-  )
+  );
 
   return (
     <Card width={560} display="flex" flexDirection="column" justifyContent="center" border="default" elevation={1} padding={16} paddingBottom={8} backgroundColor="white">
       <HideableCard title="Instructions" icon={ManualIcon} content={content} />
     </Card> 
-  )
-}
+  );
+};

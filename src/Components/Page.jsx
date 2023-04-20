@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { 
   Avatar, 
   Button, 
@@ -11,24 +11,24 @@ import {
   InfoSignIcon,  
   LearningIcon, 
   RocketSlantIcon,
-} from 'evergreen-ui'
-import Title from './Title'
-import ModInput from './ModInput'
-import Instructions from './Instructions'
-import About from './About'
-import Help from './Help'
-import Footer from './Footer'
+} from 'evergreen-ui';
+import Title from './Title';
+import ModInput from './ModInput';
+import Instructions from './Instructions';
+import About from './About';
+import Help from './Help';
+import Footer from './Footer';
 
 export default function Page() {
-  const [isShowingDetails, setIsShowingDetails] = React.useState(false)
+  const [isShowingDetails, setIsShowingDetails] = React.useState(false);
 
   function handleGoButton() {
     isShowingDetails ? (
       window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
     ) : (
       toaster.warning('', {description: letsGo})
-    )
-  }
+    );
+  };
 
   const letsGo = (
     <Avatar
@@ -36,7 +36,7 @@ export default function Page() {
       name="Lets f__ing go!!!"
       size={40}
     />
-  )
+  );
   
   return (
     <Pane 
@@ -80,5 +80,5 @@ export default function Page() {
         <Card height={16} />
       </Pane>
     </Pane>
-  )
-}
+  );
+};

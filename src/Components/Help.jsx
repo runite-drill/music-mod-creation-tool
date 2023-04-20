@@ -1,5 +1,5 @@
-import React from 'react'
-import { Pane, Card, Text, Small, Strong, Link, PredictiveAnalysisIcon } from 'evergreen-ui'
+import React from 'react';
+import { Pane, Card, Text, Small, Strong, Link, PredictiveAnalysisIcon } from 'evergreen-ui';
 import { FAQ } from '../data/faq';
 import HideableCard from './HideableCard';
 
@@ -14,8 +14,8 @@ export default function Help() {
         <Card height={0} />
         <Text size={sz}>{v.a}</Text>
       </Card>
-    )
-  })
+    );
+  });
 
   const content = (
     <Pane display="flex" flexDirection="column" alignItems="center">
@@ -36,11 +36,11 @@ export default function Help() {
         <Small>Need help? <Link size={300} href="http://www.utopiamusic.net/contact">Contact Utopia</Link>.</Small>
       </Text>
     </Pane>
-  )
+  );
 
   return (
     <Card width={560} display="flex" flexDirection="column" justifyContent="center" border="default" elevation={1} padding={16} paddingBottom={8} backgroundColor="white">
       <HideableCard title="Frequently asked questions" icon={PredictiveAnalysisIcon} content={content} />
     </Card>
-  )
-}
+  );
+};

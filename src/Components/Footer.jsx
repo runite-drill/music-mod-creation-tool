@@ -1,5 +1,5 @@
-import React from 'react'
-import { Text, Link, Small, Card, Heading } from 'evergreen-ui'
+import React from 'react';
+import { Text, Link, Small, Card, Heading } from 'evergreen-ui';
 
 export default function Footer() {
   return (
@@ -25,5 +25,5 @@ export default function Footer() {
         <Small><Link href="https://www.buymeacoffee.com/utopia" size={300}>Support this tool</Link>.</Small>
       </Text>
     </Card>
-  )
-}
+  );
+};
