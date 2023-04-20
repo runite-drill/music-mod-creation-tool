@@ -14,7 +14,7 @@ Creating music mod files with this tool is very easy.
 
 On the form provided, enter name for your mod according to the following rules:
 - Your mod name must be at least 3 characters long, and up to a maximum of 32 characters.
-- Your mod name can only consist of letters, numbers, underscores and hyphens.
+- Your mod name can only consist of letters, numbers, spaces, underscores and hyphens.
 
 Once you have a chosen a name, select at least one game to generate music mod files for. If you select multiple games, files will be generated for all of them. Note that some options are greyed out, either because they are being worked on or are actively planned for the future.
 
@@ -23,7 +23,7 @@ Finally, use the file uploader to upload all the music files you wish to include
 - You must upload at least one file. The maximum limit is 100.
 - Individual files cannot be larger than 100MB in size.
 - Files must have a unique name from each other.
-- File names cannot include spaces ` ` or periods `.`.
+- File names cannot include periods `.`, and any spaces ` ` will be treated as underscores `_`.
 
 It is also recommended that you format your files with 32 bits, a 44.1kHz frequency and a 192KB/s bit frequency to avoid any distortion or nonfunctionality of your music.
 
@@ -42,7 +42,7 @@ Currently, this tool works for:
 - Imperator: Rome
 - Victoria 3
 
-Support for Stellaris, Cities: Skylines and Victoria 3 is planned.
+Support for Stellaris and Cities: Skylines is planned.
 
 This tool also has support for replacing the main theme for Europa Universalis IV. To do so, simply name your music file `maintheme.ogg`. This feature is planned for the other games and as such `maintheme.ogg` is a reserved file name and will be skipped over by the tool for these games.
 
@@ -56,7 +56,7 @@ This tool is intended to provide you with a simple, working, framework from whic
 
 Additionally, for relevant games (VIC3 / CK3 / I:R) the tool only implements background/mood music and does not implement triggered/event music. This is something that you will also need add yourself.
 
-Finally, for games that implement radio stations (HOI4) the tool provides a default image to use as the radio station cover. The template radio station cover is provided, and you are encouraged to create your own cover to replace the default image.
+Finally, for games that implement radio stations (HOI4) the tool provides a default image to use as the radio station cover. The template radio station cover is provided, and you are encouraged to create your own cover to replace the default image. For EU4 v1.35 music channels, the mod name is used to localize the channel.
 
 For more information on music modding, consult the game's respective Paradox Wiki (e.g. the [music modding](https://eu4.paradoxwikis.com/Music_modding) page for EU4).
 
