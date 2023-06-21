@@ -1,14 +1,32 @@
-import React from 'react';
-import { Pane, Card, Button, Heading, Icon, Tooltip, CaretUpIcon, CaretDownIcon } from 'evergreen-ui';
+import React from "react";
+import {
+  Pane,
+  Card,
+  Button,
+  Heading,
+  Icon,
+  Tooltip,
+  CaretUpIcon,
+  CaretDownIcon,
+} from "evergreen-ui";
 
 export default function HideableCard(props) {
   const [isCardHidden, setIsCardHidden] = React.useState(false);
 
   const minimiseBtn = (
-    <Tooltip content={isCardHidden ? `Show ${props.title.toLowerCase()}` : `Hide ${props.title.toLowerCase()}`}>
-      <Button appearance="minimal" onClick={() => {
-        setIsCardHidden(!isCardHidden)
-      }}>
+    <Tooltip
+      content={
+        isCardHidden
+          ? `Show ${props.title.toLowerCase()}`
+          : `Hide ${props.title.toLowerCase()}`
+      }
+    >
+      <Button
+        appearance="minimal"
+        onClick={() => {
+          setIsCardHidden(!isCardHidden);
+        }}
+      >
         <Pane display="flex" flexDirection="column" alignItems="center">
           <Icon icon={isCardHidden ? CaretDownIcon : CaretUpIcon}></Icon>
         </Pane>
@@ -18,18 +36,18 @@ export default function HideableCard(props) {
 
   return (
     <Pane display="flex" flexDirection="column">
-      {props.heading ?? <Pane display="flex" alignItems="center">
-        <Heading>{props.title}</Heading>
-        <Icon icon={props.icon} marginLeft={8}/>
-        </Pane>}
+      {props.heading ?? (
+        <Pane display="flex" alignItems="center">
+          <Heading>{props.title}</Heading>
+          <Icon icon={props.icon} marginLeft={8} />
+        </Pane>
+      )}
       <Card height={8} />
-      {!isCardHidden ? (
-        props.content
-      ) : null}
+      {!isCardHidden ? props.content : null}
       <Card height={16} />
       <Card height={1} border="default" />
       <Card height={8} />
       {minimiseBtn}
-    </Pane> 
+    </Pane>
   );
-};
+}
