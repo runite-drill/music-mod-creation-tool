@@ -6,17 +6,20 @@ export function validations(name, selectedGames, files, rejectedFiles) {
   };
 }
 
+const MIN_TITLE_LENGTH = 3;
+const MAX_TITLE_LENGTH = 32;
+
 function modTitleValidation(name) {
-  if (name.length < 3) {
+  if (name.length < MIN_TITLE_LENGTH) {
     return {
       isValid: false,
-      message: "Your mod name must be at least 3 characters long.",
+      message: `Your mod name must be at least ${MIN_TITLE_LENGTH} characters long.`,
     };
   }
-  if (name.length > 32) {
+  if (name.length > MAX_TITLE_LENGTH) {
     return {
       isValid: false,
-      message: "Your mod name must be less than 32 characters long.",
+      message: `Your mod name must be less than ${MAX_TITLE_LENGTH} characters long.`,
     };
   }
   if (/[^\w- ]/.test(name)) {
