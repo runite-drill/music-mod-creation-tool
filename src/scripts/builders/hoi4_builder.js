@@ -242,7 +242,7 @@ const textHeader =
   `
 #In this file you can specify the triggers, factors and conditions in which the music will play in-game.
 #Please also remember to change your radio station image by creating a new .dds file. The template .png has been provided in the gfx folder for your convenience.
-#You may also with to fix up some of the localisation of the songs / radio station. You can do this by editing the .yml in the localisation folder.
+#You may also wish to fix up some of the localisation of the songs / radio station. You can do this by editing the .yml in the localisation folder.
 
 #Consult the music modding page on the HOI4 wiki for more info: https://hoi4.paradoxwikis.com/Music_modding.
 `;
