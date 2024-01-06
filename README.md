@@ -1,4 +1,5 @@
 # Music Mod Creation Tool
+<a href="https://discord.gg/SdQhfBM"><img src="https://img.shields.io/discord/755191733456863262?label=Chat" height="20"></a>
 
 ## For Paradox Interactive Games
 
