@@ -1,5 +1,10 @@
 # Music Mod Creation Tool
 <a href="https://discord.gg/SdQhfBM"><img src="https://img.shields.io/discord/755191733456863262?label=Help" height="20"></a>
+<a href="https://steamcommunity.com/workshop/filedetails/?id=2240429843"><img src="https://img.shields.io/steam/views/2240429843?logo=steam" height="20"></a>
+<a href="https://www.youtube.com/c/UtopiaMusic"><img src="https://img.shields.io/youtube/channel/subscribers/UCKfQv7M94LPdACI2e4AmVww?style=flat&logo=youtube" height="20"></a>
+<a href="https://open.spotify.com/artist/0mfgyFocLTW5Piqx811ZUv"><img src="https://img.shields.io/badge/Discover_Music-262626?logo=spotify" height="20"></a>
+<a href="https://www.buymeacoffee.com/utopia"><img src="https://img.shields.io/badge/Support-262626?logo=buymeacoffee" height="20"></a>
+<a href="https://github.com/runite-drill/music-mod-creation-tool/stargazers"><img src="https://img.shields.io/github/stars/runite-drill/music-mod-creation-tool.svg?style=social&label=Star&maxAge=3600" height="20"></a>
 
 ## For Paradox Interactive Games
 
