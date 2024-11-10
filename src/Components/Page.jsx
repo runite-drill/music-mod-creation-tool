@@ -38,14 +38,15 @@ export default function Page() {
 
   return (
     <Pane
-      height={!isShowingDetails ? "100vh" : null}
+      height="100vh"
       display="flex"
       alignItems="stretch"
       justifyContent="center"
       backgroundImage="url(https://imgur.com/P1Qz7n6.png)"
-      backgroundSize="fill"
+      backgroundSize="cover"
       backgroundPosition="center"
-      backgroundRepeat="repeat-y"
+      backgroundRepeat="no-repeat"
+      overflowY="auto"
     >
       <Pane>
         <Card height={16} />

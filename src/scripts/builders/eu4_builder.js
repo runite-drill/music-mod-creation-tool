@@ -72,5 +72,5 @@ function textDef(file) {
 }
 
 function locDef(mod) {
-  return `\uFEFFl_english:\n CHANNEL_music_${mod.filename}_MMCT:0 "${mod.name}"`;
+  return `\uFEFFl_english:\n CHANNEL_music_${mod.filename}:0 "${mod.name}"`;
 }

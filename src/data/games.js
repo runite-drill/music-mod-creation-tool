@@ -36,7 +36,7 @@ export const games = [
     isSupported: true,
   },
   {
-    title: "Cities: Skylines",
+    title: "Cities: Skylines 1 & 2",
     tag: "CS",
     color: "#4fb8ee",
     isSupported: false,
