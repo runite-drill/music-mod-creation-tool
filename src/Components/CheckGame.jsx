@@ -8,7 +8,7 @@ export default function CheckGame(props) {
       label={
         props.game.isSupported
           ? props.game.title
-          : `${props.game.title} (coming soon!)`
+          : `${props.game.title} (not supported)`
       }
       checked={checked}
       disabled={!props.game.isSupported}
