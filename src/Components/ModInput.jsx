@@ -55,6 +55,8 @@ export default function ModInput() {
   }
 
   const gameCheckBoxes = games.map((game, i) => {
+    if (!game.isSupported) return null;
+
     return (
       <CheckGame
         key={`${game.tag}-${i}`}
