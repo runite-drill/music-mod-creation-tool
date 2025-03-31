@@ -64,12 +64,11 @@ export default function MusicFileUploader(props) {
     const f = files;
     fs.forEach((originalFile) => {
       //replace spaces with underscores in the file name, but retain the original name as the song title
-      const file = new File(
-        [originalFile],
-        originalFile.name.split(" ").join("_")
-      );
+      const filename = originalFile.name.split(" ").join("_");
+      const file = new File([originalFile], filename);
       file.title = originalFile.name.split(".")[0];
       file.originalName = originalFile.name;
+      file.handle = filename.split(".")[0] + "_MMCT";
 
       //check for duplicates or bad filenames and route to file rejections
       if (f.find((v) => v.name === file.name)) {
