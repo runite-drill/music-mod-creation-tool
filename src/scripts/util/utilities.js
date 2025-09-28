@@ -50,3 +50,9 @@ export function smartCapitalize(str) {
 
   return capitalized.join(" ");
 }
+
+export async function downloadData(filepath, filename, zipFolder) {
+  const imageBlob = await fetch(filepath).then((response) => response.blob());
+  const imgData = new File([imageBlob], filename);
+  zipFolder.file(filename, imgData, { base64: true });
+}
