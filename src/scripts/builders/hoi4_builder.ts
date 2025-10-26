@@ -2,6 +2,7 @@ import stationTemplate from "../../data/radio_station_cover_template.png";
 import stationCover from "../../data/hoi4_radio_station.dds";
 import { Mod, MusicTrack } from "../util/types";
 import JSZip from "jszip";
+import { cleanYamlKey } from "../util/utilities";
 
 export async function hoi4_builder(
   mod: Mod,
@@ -27,7 +28,10 @@ export async function hoi4_builder(
   const localisationFolder = gameFolder.folder("localisation");
   const musicFolder = gameFolder.folder("music");
 
-  const stationName = `${mod.filename}`;
+  const station = {
+    key: cleanYamlKey(mod.filename),
+    name: mod.filename,
+  };
 
   //Create gfx files
   if (gfxFolder) {
@@ -38,24 +42,24 @@ export async function hoi4_builder(
     );
     downloadData(
       stationCover,
-      `radio_station_cover_${stationName}.dds`,
+      `radio_station_cover_${station.key}.dds`,
       gfxFolder
     );
   }
 
   //Create interface files
-  interfaceFolder?.file(`${stationName}.gfx`, gfxDef(stationName));
-  interfaceFolder?.file(`${stationName}.gui`, guiDef(stationName));
+  interfaceFolder?.file(`${station.key}.gfx`, gfxDef(station.key));
+  interfaceFolder?.file(`${station.key}.gui`, guiDef(station.key));
 
   //Create localisation files
-  const loc = locDef(songs, mod, stationName);
+  const loc = locDef(songs, mod, station);
   localisationFolder?.file(
-    `music_station_${stationName}_l_english.yml`,
+    `music_station_${station.key}_l_english.yml`,
     loc.join("\n")
   );
 
   //Create music files
-  const modMusicFolder = musicFolder?.folder(stationName);
+  const radioStationFolder = musicFolder?.folder(station.name);
 
   //.asset file
   const asset = [assetHeader];
@@ -63,18 +67,18 @@ export async function hoi4_builder(
     if (s.name !== "maintheme") {
       asset.push(assetDef(s));
     }
-    modMusicFolder?.file(s.file.name, s.file);
+    radioStationFolder?.file(s.file.name, s.file);
   });
-  modMusicFolder?.file(`${mod.filename}.asset`, asset.join("\n"));
+  radioStationFolder?.file(`${mod.filename}.asset`, asset.join("\n"));
 
   //.txt file
-  const text = [textHeader, `music_station = "${stationName}"`];
+  const text = [textHeader, `music_station = "${station.key}"`];
   songs.forEach((s) => {
     if (s.name !== "maintheme") {
       text.push(textDef(s));
     }
   });
-  modMusicFolder?.file(`${mod.filename}.txt`, text.join("\n"));
+  radioStationFolder?.file(`${mod.filename}.txt`, text.join("\n"));
 }
 
 async function downloadData(
@@ -87,20 +91,20 @@ async function downloadData(
   zipFolder.file(filename, imgData, { base64: true });
 }
 
-function gfxDef(stationName: string) {
+function gfxDef(stationKey: string) {
   return `spriteTypes = {
     spriteType = {
-      name = "GFX_radio_station_cover_${stationName}"
-      textureFile = "gfx/radio_station_cover_${stationName}.dds"
+      name = "GFX_radio_station_cover_${stationKey}"
+      textureFile = "gfx/radio_station_cover_${stationKey}.dds"
       noOfFrames = 2
     }
 }`;
 }
 
-function guiDef(stationName: string) {
+function guiDef(stationKey: string) {
   return `guiTypes = {
     containerWindowType = {
-        name = "${stationName}_faceplate"
+        name = "${stationKey}_faceplate"
         position = { x=0 y=0 }
         size = { width = 590 height = 46 }
   
@@ -211,24 +215,28 @@ function guiDef(stationName: string) {
     }
   
     containerWindowType={
-        name = "${stationName}_stations_entry"
+        name = "${stationKey}_stations_entry"
         size = { width = 162 height = 130 }
         
         checkBoxType = {
             name = "select_station_button"
             position = { x = 0 y = 0 }
-            quadTextureSprite = "GFX_radio_station_cover_${stationName}"
+            quadTextureSprite = "GFX_radio_station_cover_${stationKey}"
             clicksound = decisions_ui_button
         }
     }
 }`;
 }
 
-function locDef(songs: MusicTrack[], mod: Mod, stationName: string) {
+function locDef(
+  songs: MusicTrack[],
+  mod: Mod,
+  station: { key: string; name: string }
+) {
   const text = [
     "\uFEFF",
     `l_english:
- ${stationName}_TITLE:0 "${mod.name} Radio"`,
+ ${station.key}_TITLE:0 "${station.name} Radio"`,
   ];
   songs.forEach((s) => {
     text.push(` ${s.key}:0 "${s.name}"`);
