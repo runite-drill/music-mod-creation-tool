@@ -8,17 +8,31 @@ import {
   Tooltip,
   CaretUpIcon,
   CaretDownIcon,
+  IconComponent,
 } from "evergreen-ui";
 
-export default function HideableCard(props) {
+interface HideableCardProps {
+  title: string;
+  icon?: IconComponent;
+  content: React.ReactNode;
+  heading?: React.ReactNode;
+}
+
+export default function HideableCard({
+  title,
+  icon,
+  content,
+  heading,
+}: HideableCardProps) {
   const [isCardHidden, setIsCardHidden] = React.useState(false);
 
   const minimiseBtn = (
+    // @ts-ignore
     <Tooltip
       content={
         isCardHidden
-          ? `Show ${props.title.toLowerCase()}`
-          : `Hide ${props.title.toLowerCase()}`
+          ? `Show ${title.toLowerCase()}`
+          : `Hide ${title.toLowerCase()}`
       }
     >
       <Button
@@ -28,6 +42,7 @@ export default function HideableCard(props) {
         }}
       >
         <Pane display="flex" flexDirection="column" alignItems="center">
+          {/* @ts-ignore */}
           <Icon icon={isCardHidden ? CaretDownIcon : CaretUpIcon}></Icon>
         </Pane>
       </Button>
@@ -36,14 +51,15 @@ export default function HideableCard(props) {
 
   return (
     <Pane display="flex" flexDirection="column">
-      {props.heading ?? (
+      {heading ?? (
         <Pane display="flex" alignItems="center">
-          <Heading>{props.title}</Heading>
-          <Icon icon={props.icon} marginLeft={8} />
+          <Heading>{title}</Heading>
+          {/* @ts-ignore */}
+          {!!icon && <Icon icon={icon} marginLeft={8} />}
         </Pane>
       )}
       <Card height={8} />
-      {!isCardHidden ? props.content : null}
+      {!isCardHidden ? content : null}
       <Card height={16} />
       <Card height={1} border="default" />
       <Card height={8} />

@@ -1,4 +1,12 @@
-export function validations(name, selectedGames, files, rejectedFiles) {
+import { FileRejection } from "evergreen-ui";
+import { Game } from "./types";
+
+export function validations(
+  name: string,
+  selectedGames: Game[],
+  files: File[],
+  rejectedFiles: FileRejection[]
+) {
   return {
     title: modTitleValidation(name),
     selection: gameSelectionValidation(selectedGames),
@@ -9,7 +17,7 @@ export function validations(name, selectedGames, files, rejectedFiles) {
 const MIN_TITLE_LENGTH = 3;
 const MAX_TITLE_LENGTH = 32;
 
-function modTitleValidation(name) {
+function modTitleValidation(name: string) {
   if (name.length < MIN_TITLE_LENGTH) {
     return {
       isValid: false,
@@ -32,7 +40,7 @@ function modTitleValidation(name) {
   return { isValid: true, message: "success" };
 }
 
-function gameSelectionValidation(selectedGames) {
+function gameSelectionValidation(selectedGames: Game[]) {
   if (selectedGames.length < 1) {
     return {
       isValid: false,
@@ -42,7 +50,7 @@ function gameSelectionValidation(selectedGames) {
   return { isValid: true, message: "success" };
 }
 
-function musicFileValidation(files, rejectedFiles) {
+function musicFileValidation(files: File[], rejectedFiles: FileRejection[]) {
   if (files.length < 1) {
     return {
       isValid: false,

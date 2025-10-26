@@ -17,19 +17,21 @@ import {
   Alert,
   HelpIcon,
   Tooltip,
+  FileRejection,
 } from "evergreen-ui";
 import CheckGame from "./CheckGame";
 import MusicFileUploader from "./MusicFileUploader";
 import { validations } from "../scripts/util/validations";
 import { games } from "../data/games";
 import { buildMods } from "../scripts/builders/buildMods";
+import { Game, mapFileToMusicTrack } from "../scripts/util/types";
 
 export default function ModInput() {
-  const [modName, setModName] = React.useState("");
-  const [selectedGames, setSelectedGames] = React.useState([]);
-  const [files, setFiles] = React.useState([]);
-  const [rejectedFiles, setRejectedFiles] = React.useState([]);
-  const [statusAlert, setStatusAlert] = React.useState(null);
+  const [modName, setModName] = React.useState<string>("");
+  const [selectedGames, setSelectedGames] = React.useState<Game[]>([]);
+  const [files, setFiles] = React.useState<File[]>([]);
+  const [rejectedFiles, setRejectedFiles] = React.useState<FileRejection[]>([]);
+  const [statusAlert, setStatusAlert] = React.useState<React.ReactNode>(null);
   const [errors, setErrors] = React.useState({
     title: {
       isValid: true,
@@ -44,7 +46,15 @@ export default function ModInput() {
 
   const isFormComplete = modName.trim() && selectedGames.length && files.length;
 
-  function setGameSelect(game, isSelected) {
+  function onError(message: string) {
+    setStatusAlert(<Alert intent="danger" title={message} marginTop={16} />);
+  }
+
+  function onSuccess(message: string) {
+    setStatusAlert(<Alert intent="success" title={message} marginTop={16} />);
+  }
+
+  function setGameSelect(game: Game, isSelected: boolean) {
     const selectedGamesArray = selectedGames.filter((v) => v.tag !== game.tag);
 
     if (isSelected) {
@@ -66,11 +76,11 @@ export default function ModInput() {
     );
   });
 
-  function setValidFiles(f) {
+  function setValidFiles(f: File[]) {
     setFiles(f);
   }
 
-  function setInvalidFiles(f) {
+  function setInvalidFiles(f: FileRejection[]) {
     setRejectedFiles(f);
   }
 
@@ -99,7 +109,10 @@ export default function ModInput() {
         name: trimmedModName,
         filename: `${trimmedModName.split(" ").join("")}_MMCT`,
       };
-      buildMods(mod, selectedGames, files, setStatusAlert);
+
+      const musicTracks = files.map((file) => mapFileToMusicTrack(file));
+
+      buildMods(mod, selectedGames, musicTracks, { onError, onSuccess });
     } else {
       setStatusAlert(
         <Alert intent="danger" title="Validation failed" marginTop={16}>
@@ -129,8 +142,10 @@ export default function ModInput() {
       <Pane display="flex" justifyContent="space-between">
         <Pane display="flex" alignItems="center">
           <Heading>Music mod builder</Heading>
+          {/* @ts-ignore */}
           <Icon icon={CodeBlockIcon} marginLeft={8} />
         </Pane>
+        {/* @ts-ignore */}
         <Popover
           position={Position.BOTTOM_RIGHT}
           content={({ close }) => (
@@ -150,9 +165,11 @@ export default function ModInput() {
             </Pane>
           )}
         >
+          {/* @ts-ignore */}
           <Tooltip content="Help">
             <Button appearance="minimal">
               <Pane display="flex" flexDirection="column" alignItems="center">
+                {/* @ts-ignore */}
                 <Icon icon={HelpIcon}></Icon>
               </Pane>
             </Button>
@@ -171,7 +188,9 @@ export default function ModInput() {
         placeholder="My Awesome Music Mod"
         hint="Minimum 3 characters."
         value={modName}
-        onChange={(e) => setModName(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setModName(e.target.value)
+        }
       />
       <Card height={8} />
       <Pane>
@@ -212,6 +231,7 @@ export default function ModInput() {
               runScripts();
             }}
           >
+            {/* @ts-ignore */}
             <Icon icon={TakeActionIcon} marginRight={8} />
             Generate music mod
           </Button>
