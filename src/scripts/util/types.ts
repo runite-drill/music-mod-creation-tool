@@ -1,4 +1,5 @@
 import JSZip from "jszip";
+import { cleanYamlKey } from "./utilities";
 
 export type Mod = {
   name: string;
@@ -22,7 +23,7 @@ export type MusicTrack = {
 export function mapFileToMusicTrack(file: File): MusicTrack {
   const baseName = file.name.replace(/\.[^/.]+$/, "");
   const name = baseName.replace(/_/g, " ");
-  const key = baseName + "_MMCT";
+  const key = cleanYamlKey(baseName) + "_MMCT";
 
   return {
     name,
