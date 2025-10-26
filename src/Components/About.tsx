@@ -22,6 +22,7 @@ export default function About() {
     <Pane display="flex" justifyContent="space-between">
       <Heading>
         About this tool
+        {/* @ts-ignore */}
         <Icon icon={BuildIcon} marginLeft={8} />
       </Heading>
       <Text color="muted">

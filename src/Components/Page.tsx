@@ -66,6 +66,7 @@ export default function Page() {
         ) : null}
         <Pane display="flex" justifyContent="space-evenly">
           <Button onClick={() => handleGoButton()}>
+            {/* @ts-ignore */}
             <Icon
               icon={isShowingDetails ? ArrowUpIcon : RocketSlantIcon}
               marginRight={8}
@@ -73,6 +74,7 @@ export default function Page() {
             Lets ... go!
           </Button>
           <Button onClick={() => setIsShowingDetails(!isShowingDetails)}>
+            {/* @ts-ignore */}
             <Icon
               icon={isShowingDetails ? LearningIcon : InfoSignIcon}
               marginRight={8}

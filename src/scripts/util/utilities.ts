@@ -1,4 +1,4 @@
-export function smartCapitalize(str) {
+export function smartCapitalize(str: string) {
   // Capitalises every word of a sentence except for words like "of", "the", "and", etc.
   // Always capitalises the first word of a sentence.
 
