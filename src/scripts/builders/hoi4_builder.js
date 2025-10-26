@@ -1,5 +1,6 @@
 import stationTemplate from "../../data/radio_station_cover_template.png";
 import stationCover from "../../data/hoi4_radio_station.dds";
+import { downloadData } from "../util/utilities";
 
 export async function hoi4_builder(mod, files, gameFolder) {
   /*
@@ -24,8 +25,12 @@ export async function hoi4_builder(mod, files, gameFolder) {
   const stationName = `${mod.filename}`;
 
   //Create gfx files
-  downloadData(stationTemplate, `radio_station_cover_template.png`, gfxFolder);
-  downloadData(
+  await downloadData(
+    stationTemplate,
+    `radio_station_cover_template.png`,
+    gfxFolder
+  );
+  await downloadData(
     stationCover,
     `radio_station_cover_${stationName}.dds`,
     gfxFolder
@@ -63,12 +68,6 @@ export async function hoi4_builder(mod, files, gameFolder) {
     }
   });
   modMusicFolder.file(`${mod.filename}.txt`, text.join("\n"));
-}
-
-async function downloadData(filepath, filename, zipFolder) {
-  const imageBlob = await fetch(filepath).then((response) => response.blob());
-  const imgData = new File([imageBlob], filename);
-  zipFolder.file(filename, imgData, { base64: true });
 }
 
 function gfxDef(stationName) {
@@ -215,7 +214,8 @@ function locDef(files, mod, stationName) {
  ${stationName}_TITLE:0 "${mod.name} Radio"`,
   ];
   files.forEach((f) => {
-    text.push(` ${f.name.split(".")[0]}_MMCT:0 "${f.name.split(".")[0]}"`);
+    const trackName = f.name.split(".")[0];
+    text.push(` ${trackName}_MMCT:0 "${trackName.replace(/_/g, " ")}"`);
   });
 
   return text;
