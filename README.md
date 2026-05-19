@@ -10,7 +10,7 @@
 
 This tool assists users with adding music to Paradox Interactive games by generating the neccessary folders and scripts and bundling it into a single `.zip` file.
 
-The tool can be freely used at https://runite-drill.github.io/music-mod-creation-tool/.
+The tool can be freely used at https://utopiamusic.net/mmct.
 
 Note: This tool works best on Chrome and is unsupported on Safari and Internet Explorer.
 
