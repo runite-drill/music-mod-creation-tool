@@ -27,7 +27,7 @@ export default function About() {
       </Heading>
       <Text color="muted">
         <Small>
-          <Link href="https://github.com/camielvs/music-mod-creation-tool">
+          <Link href="https://github.com/runite-drill/music-mod-creation-tool">
             Source code
           </Link>
         </Small>
