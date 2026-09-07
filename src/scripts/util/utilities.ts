@@ -51,11 +51,14 @@ export function smartCapitalize(str: string) {
   return capitalized.join(" ");
 }
 
+const MAX_KEY_LENGTH = 40;
+
 export function cleanYamlKey(key: string) {
   // Cleans a YAML key string to make it safe and readable.
   key = key.trim();
   key = key.replace(/[^A-Za-z0-9_-]+/g, "");
   key = key.replace(/^[-_]+/, "");
+  key = key.slice(0, MAX_KEY_LENGTH);
 
   if (key === "") key = "MMCT_yaml_key_error";
 
