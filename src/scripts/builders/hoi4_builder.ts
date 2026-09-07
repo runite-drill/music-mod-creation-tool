@@ -30,7 +30,7 @@ export async function hoi4_builder(
 
   const station = {
     key: cleanYamlKey(mod.filename),
-    name: mod.filename,
+    name: mod.name,
   };
 
   //Create gfx files
@@ -52,7 +52,7 @@ export async function hoi4_builder(
   interfaceFolder?.file(`${station.key}.gui`, guiDef(station.key));
 
   //Create localisation files
-  const loc = locDef(songs, mod, station);
+  const loc = locDef(songs, station);
   localisationFolder?.file(
     `music_station_${station.key}_l_english.yml`,
     loc.join("\n")
@@ -230,7 +230,6 @@ function guiDef(stationKey: string) {
 
 function locDef(
   songs: MusicTrack[],
-  mod: Mod,
   station: { key: string; name: string }
 ) {
   const text = [
