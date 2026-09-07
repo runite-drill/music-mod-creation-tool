@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/mmct/static/css/main.e6c13ad2.css",
+    "main.js": "/mmct/static/js/main.1714413a.js",
+    "static/js/787.6578bab4.chunk.js": "/mmct/static/js/787.6578bab4.chunk.js",
+    "static/media/hoi4_radio_station.dds": "/mmct/static/media/hoi4_radio_station.8e83e23b4140503ea8b0.dds",
+    "static/media/radio_station_cover_template.png": "/mmct/static/media/radio_station_cover_template.efad7d3aaca2d8ab9331.png",
+    "index.html": "/mmct/index.html",
+    "main.e6c13ad2.css.map": "/mmct/static/css/main.e6c13ad2.css.map",
+    "main.1714413a.js.map": "/mmct/static/js/main.1714413a.js.map",
+    "787.6578bab4.chunk.js.map": "/mmct/static/js/787.6578bab4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.1714413a.js"
+  ]
+}
